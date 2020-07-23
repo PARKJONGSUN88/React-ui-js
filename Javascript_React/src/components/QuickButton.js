@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import styled, { css, keyframes } from "styled-components";
 
-const SpeedDial = (props) => {
-  const [isToggle, setIsToggle] = useState(true);
+const QuickButton = (props) => {
+  const [isToggle, setIsToggle] = useState(false);
   const [iconHoverIndex, setIconHoverIndex] = useState(-1);
 
   const iconClickHandler = (e) => {
@@ -15,64 +15,62 @@ const SpeedDial = (props) => {
       iconGroupDirection={props.iconGroupDirection}
       onMouseLeave={() => setIsToggle(false)}
     >
-      {props.iconList.map((item, index) => (
-        <SwitchButtonCover
-          isToggle={isToggle}
-          iconWidth={props.iconWidth}
-          iconHeight={props.iconHeight}
-          isSwitchIconRotate={props.isSwitchIconRotate}
-          switchIconRotateAngle={props.switchIconRotateAngle}
-          switchIconRotateSpeed={props.switchIconRotateSpeed}
-          switchIconHoverColor={props.switchIconHoverColor}
-          isSwitchIconHoverColor={props.isSwitchIconHoverColor}
-          switchIconHoverRadius={props.switchIconHoverRadius}
-          iconHoverIndex={iconHoverIndex}
-          isToggleSwitchColorStay={props.isToggleSwitchColorStay}
-          onMouseEnter={() => setIsToggle(true)}
-          onClick={() => setIsToggle(!isToggle)}
-        >
-          {props.switchIcon}
-
-          <IconGroupWrap
-            index={index}
-            isToggle={isToggle}
+      <SwitchButtonCover
+        isToggle={isToggle}
+        iconWidth={props.iconWidth}
+        iconHeight={props.iconHeight}
+        isSwitchIconRotate={props.isSwitchIconRotate}
+        switchIconRotateAngle={props.switchIconRotateAngle}
+        switchIconRotateSpeed={props.switchIconRotateSpeed}
+        switchIconHoverColor={props.switchIconHoverColor}
+        isSwitchIconHoverColor={props.isSwitchIconHoverColor}
+        switchIconHoverRadius={props.switchIconHoverRadius}
+        iconHoverIndex={iconHoverIndex}
+        isToggleSwitchColorStay={props.isToggleSwitchColorStay}
+        onMouseEnter={() => setIsToggle(true)}
+        onClick={() => setIsToggle(!isToggle)}
+      >
+        {props.switchIcon}
+      </SwitchButtonCover>
+      <IconGroupWrap
+        isToggle={isToggle}
+        iconGroupDirection={props.iconGroupDirection}
+        iconWidth={props.iconWidth}
+        iconHeight={props.iconHeight}
+        length={props.iconList.length}
+        iconSpaceBetween={props.iconSpaceBetween}
+        toggleSpeed={props.toggleSpeed}
+        isIconHoverColor={props.isIconHoverColor}
+        iconHoverIndex={iconHoverIndex}
+        onMouseLeave={() => setIconHoverIndex(-1)}
+        iconHoverColor={props.iconHoverColor}
+        iconHoverRadius={props.iconHoverRadius}
+      >
+        {props.iconList.map((item, index) => (
+          <IconCover
             iconGroupDirection={props.iconGroupDirection}
+            isToggle={isToggle}
+            key={index}
+            index={index}
+            length={props.iconList.length}
+            toggleSpeed={props.toggleSpeed}
             iconWidth={props.iconWidth}
             iconHeight={props.iconHeight}
-            length={props.iconList.length}
             iconSpaceBetween={props.iconSpaceBetween}
-            toggleSpeed={props.toggleSpeed}
-            isIconHoverColor={props.isIconHoverColor}
-            iconHoverIndex={iconHoverIndex}
-            onMouseLeave={() => setIconHoverIndex(-1)}
-            iconHoverColor={props.iconHoverColor}
-            iconHoverRadius={props.iconHoverRadius}
+            onMouseEnter={() => setIconHoverIndex(index)}
+            onClick={() => iconClickHandler(index)}
           >
-            <IconCover
-              iconGroupDirection={props.iconGroupDirection}
-              isToggle={isToggle}
-              key={index}
-              index={index}
-              length={props.iconList.length}
-              toggleSpeed={props.toggleSpeed}
-              iconWidth={props.iconWidth}
-              iconHeight={props.iconHeight}
-              iconSpaceBetween={props.iconSpaceBetween}
-              onMouseEnter={() => setIconHoverIndex(index)}
-              onClick={() => iconClickHandler(index)}
-            >
-              {item.icon}
-            </IconCover>
-          </IconGroupWrap>
-        </SwitchButtonCover>
-      ))}
+            {item.icon}
+          </IconCover>
+        ))}
+      </IconGroupWrap>
     </Contents>
   );
 };
 
-export default SpeedDial;
+export default QuickButton;
 
-SpeedDial.defaultProps = {
+QuickButton.defaultProps = {
   switchIcon: "button",
   iconList: [
     { url: "/url1", icon: "icon1" },
@@ -81,8 +79,8 @@ SpeedDial.defaultProps = {
   ],
   userFunc: (e) => console.log(e),
   iconGroupDirection: "right",
-  iconWidth: 50,
-  iconHeight: 50,
+  iconWidth: 100,
+  iconHeight: 100,
   iconSpaceBetween: 20,
   toggleSpeed: 200,
   isSwitchIconHoverColor: true,
@@ -109,7 +107,6 @@ const Contents = styled.div`
 `;
 
 const SwitchButtonCover = styled.div`
-  position: absolute;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -159,8 +156,6 @@ const offRotate = (e) => keyframes`
 `;
 
 const IconGroupWrap = styled.div`
-  background-color: pink;
-  width: 300px;
   position: absolute;
   bottom: ${(props) => props.iconGroupDirection === "up" && props.iconHeight}px;
   top: ${(props) => props.iconGroupDirection === "down" && props.iconHeight}px;
@@ -186,14 +181,9 @@ const IconGroupWrap = styled.div`
     background-color: ${(props) => props.iconHoverColor};
     border-radius: ${(props) => props.iconHoverRadius}px;
   }
-
-  transform: rotate(${(props) => (props.index + 1) * 30}deg);
-  transform-origin: -10% -10%;
-  /* transform:rotate(10deg); */
 `;
 
 const IconCover = styled.div`
-  background-color: red;
   display: flex;
   justify-content: center;
   align-items: center;

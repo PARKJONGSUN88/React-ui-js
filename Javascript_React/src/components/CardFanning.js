@@ -13,7 +13,7 @@ const iconList = [
 
 const switchIcon = "button";
 
-const SpeedDial = (props) => {
+const CardFanning = (props) => {
   const [isToggle, setIsToggle] = useState(false);
 
   return (
@@ -41,7 +41,7 @@ const SpeedDial = (props) => {
   );
 };
 
-export default SpeedDial;
+export default CardFanning;
 
 const Contents = styled.div`
   position: relative;

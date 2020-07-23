@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import IndexPage from "./pages/indexPage";
-import SpeedDialPage from "./pages/SpeedDialPage/SpeedDialPage";
-import RatingPage from "./pages/RatingPage/RatingPage";
-import Test from "./components/SpeedDial/test3";
+import QuickButton from "./components/QuickButton";
+import CardFanning from "./components/CardFanning";
+import SpeedDial from "./components/SpeedDial";
 
 class Routes extends Component {
   render() {
@@ -11,9 +11,9 @@ class Routes extends Component {
       <Router>
         <Switch>
           <Route exact path="/" component={IndexPage} />
-          <Route exact path="/speeddial" component={SpeedDialPage} />
-          <Route exact path="/rating" component={RatingPage} />
-          <Route exact path="/test" component={Test} />
+          <Route exact path="/QuickButton" component={QuickButton} />
+          <Route exact path="/CardFanning" component={CardFanning} />
+          <Route exact path="/SpeedDial" component={SpeedDial} />
         </Switch>
       </Router>
     );
