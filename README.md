@@ -7,16 +7,22 @@
 <br>
 
 ## Quick Button
+**default**
 <img width="1280" style="border:black 1px solid" alt="2" src="https://user-images.githubusercontent.com/50945715/88279197-9d4cf200-cd1e-11ea-8b19-502caa710971.gif">
 <br>
 <br>
 
 ## Card Fanning
+**default**
 <img width="1280" style="border:black 1px solid" alt="2" src="https://user-images.githubusercontent.com/50945715/88279198-9de58880-cd1e-11ea-9ed4-467e6f480380.gif">
 <br>
 <br>
 
 ## Speed Dial
+**default**
 <img width="1280" style="border:black 1px solid"  alt="gif2" src="https://user-images.githubusercontent.com/50945715/88279200-9e7e1f00-cd1e-11ea-9c6b-49b94a71fff9.gif">
+<br>
+**example**
+<img width="1280" style="border:black 1px solid"  alt="gif2" src="https://user-images.githubusercontent.com/50945715/88293363-df356280-cd35-11ea-9678-442aaad98146.gif">
 <br>
 <br>
