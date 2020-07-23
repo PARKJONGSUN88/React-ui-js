@@ -1,37 +1,44 @@
 import React, { useState } from "react";
-import styled, { css, keyframes } from "styled-components";
-
-const iconList = [
-  { url: "0", icon: "0" },
-  { url: "15", icon: "15" },
-  { url: "30", icon: "30" },
-  { url: "45", icon: "45" },
-];
-
-const switchIcon = "button";
-
-const toggleSpeed = 200;
-const deg = 30;
+import styled, { keyframes } from "styled-components";
 
 const SpeedDial = (props) => {
+  const {
+    button,
+    bWidth,
+    bHeight,
+    dials,
+    width,
+    height,
+    between,
+    deg,
+    speed,
+    userFunc,
+  } = props;
   const [isToggle, setIsToggle] = useState(false);
 
   return (
     <Contents>
-      <ToggleButton isToggle={isToggle} onClick={() => setIsToggle(!isToggle)}>
-        {switchIcon}
+      <ToggleButton
+        isToggle={isToggle}
+        bWidth={bWidth}
+        bHeight={bHeight}
+        onClick={() => setIsToggle(!isToggle)}
+      >
+        {button}
       </ToggleButton>
-      <Units>
-        {iconList.map((item, index) => (
-          <Bridge index={index} deg={deg}>
+      <Units height={height}>
+        {dials.map((item, index) => (
+          <Bridge index={index} between={between} deg={deg}>
             <UnitWrap index={index} deg={deg}>
               <Unit
-                index={index}
                 isToggle={isToggle}
-                length={iconList.length}
-                toggleSpeed={toggleSpeed}
+                length={dials.length}
+                index={index}
+                width={width}
+                height={height}
+                speed={speed}
                 onClick={() => {
-                  console.log(index);
+                  userFunc(dials[index].url);
                   setIsToggle(false);
                 }}
               >
@@ -47,62 +54,74 @@ const SpeedDial = (props) => {
 
 export default SpeedDial;
 
+SpeedDial.defaultProps = {
+  button: "button",
+  bWidth: 100,
+  bHeight: 100,
+  dials: [
+    { url: "url1", icon: "icon1" },
+    { url: "url2", icon: "icon2" },
+  ],
+  width: 40,
+  height: 40,
+  between: 100,
+  deg: 45,
+  speed: 150,
+  userFunc: (e) => console.log(e),
+};
+
 const Contents = styled.div`
   position: relative;
-  top: 50px;
-  left: 100px;
 `;
 
 const ToggleButton = styled.div`
   position: absolute;
-  cursor: pointer;
-  width: 100px;
-  height: 100px;
-  background-color: skyblue;
+  width: ${(props) => props.bWidth}px;
+  height: ${(props) => props.bHeight}px;
+  display: flex;
   align-items: center;
   justify-content: center;
   z-index: 2;
+  transform: translate(
+    ${(props) => -props.bWidth / 2}px,
+    ${(props) => -props.bHeight / 2}px
+  );
 `;
 
 const Units = styled.div`
   position: absolute;
-  left: 50px;
-  top: 25px;
+  transform: translateY(${(props) => -props.height / 2}px);
 `;
 
 const Bridge = styled.div`
   position: absolute;
   left: 0;
-  width: 200px;
+  width: ${(props) => props.between}px;
   display: flex;
-  align-items: center;
   transform-origin: 0 50%;
   transform: rotate(${(props) => props.index * props.deg}deg);
 `;
 
 const UnitWrap = styled.div`
+  transform: rotate(${(props) => props.index * -props.deg}deg);
   margin-left: auto;
-  transform: rotate(${(props) => props.index * props.deg * -1}deg);
 `;
 
 const Unit = styled.div`
-  cursor: pointer;
-  width: 50px;
-  height: 50px;
-  background-color: white;
-  border: 1px solid pink;
+  width: ${(props) => props.width}px;
+  height: ${(props) => props.height}px;
   display: flex;
   align-items: center;
   justify-content: center;
-  animation: ${(props) => (props.isToggle ? onRotate(0, 1) : onRotate(1, 0))}
+  animation: ${(props) => (props.isToggle ? onScale(0, 1) : onScale(1, 0))}
     ${(props) =>
       props.isToggle
-        ? (props.index + 1) * props.toggleSpeed
-        : (props.length - props.index) * props.toggleSpeed}ms
+        ? (props.index + 1) * props.speed
+        : (props.length - props.index) * props.speed}ms
     forwards;
 `;
 
-const onRotate = (e, i) => keyframes`
+const onScale = (e, i) => keyframes`
   0% {
     transform: scale(${e});
   }

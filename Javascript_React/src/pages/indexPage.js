@@ -12,7 +12,7 @@ const IndexPage = (props) => {
       <Content onClick={() => props.history.push("/CardFanning")}>
         CardFanning로 이동
       </Content>
-      <Content onClick={() => props.history.push("/SpeedDial")}>
+      <Content onClick={() => props.history.push("/testPage")}>
         SpeedDial로 이동
       </Content>
     </>
