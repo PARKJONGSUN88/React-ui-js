@@ -1,32 +1,85 @@
-import React, { useState } from "react";
-import styled, { keyframes } from "styled-components";
+import React, { useState } from 'react';
+import styled, { keyframes } from 'styled-components';
 
-const SpeedDial = (props) => {
-  const {
-    button,
-    bWidth,
-    bHeight,
-    dials,
-    width,
-    height,
-    between,
-    fDeg,
-    deg,
-    speed,
-    userFunc,
-  } = props;
+interface SpeedDialType {
+  button?: React.ReactElement | string | number;
+  bWidth?: number;
+  bHeight?: number;
+  dials?: Array<dialsType>;
+  width?: number;
+  height?: number;
+  between?: number;
+  fDeg?: number;
+  deg?: number;
+  speed?: number;
+  userFunc?: Function;
+}
+
+interface dialsType {
+  url?: string | number | boolean | null | undefined;
+  icon: React.ReactElement | string | number;
+}
+
+interface ButtonType {
+  bWidth: number;
+  bHeight: number;
+}
+
+interface UnitsType {
+  between: number;
+  height: number;
+  fDeg: number;
+}
+
+interface BridgeType {
+  index: number;
+  deg: number;
+}
+
+interface UnitWrapType {
+  index: number;
+  deg: number;
+  fDeg: number;
+}
+
+interface UnitType {
+  width: number;
+  height: number;
+  isToggle: boolean;
+  index: number;
+  speed: number;
+  length: number;
+}
+
+const SpeedDial: React.FC<SpeedDialType> = ({
+  button = 'button',
+  bWidth = 100,
+  bHeight = 100,
+  dials = [
+    { url: 'url1', icon: 'icon1' },
+    { url: 'url2', icon: 'icon2' },
+  ],
+  width = 50,
+  height = 50,
+  between = 150,
+  fDeg = 180,
+  deg = 30,
+  speed = 200,
+  userFunc = (e: string | number | boolean | null | undefined) =>
+    console.log(e),
+}) => {
   const [isToggle, setIsToggle] = useState(false);
 
   return (
     <Contents>
-      <ToggleButton     
+      <Button
         bWidth={bWidth}
         bHeight={bHeight}
         onClick={() => setIsToggle(!isToggle)}
       >
         {button}
-      </ToggleButton>
-      <Units height={height} between={between} fDeg={fDeg}>
+      </Button>
+      <Units between={between} height={height} fDeg={fDeg}>
         {dials.map((item, index) => (
           <Bridge index={index} deg={deg}>
             <UnitWrap index={index} deg={deg} fDeg={fDeg}>
@@ -54,28 +107,11 @@ const SpeedDial = (props) => {
 
 export default SpeedDial;
 
-SpeedDial.defaultProps = {
-  button: "button",
-  bWidth: 100,
-  bHeight: 100,
-  dials: [
-    { url: "url1", icon: "icon1" },
-    { url: "url2", icon: "icon2" },
-  ],
-  width: 50,
-  height: 50,
-  between: 150,
-  fDeg: 180,
-  deg: 30,
-  speed: 200,
-  userFunc: (e) => console.log(e),
-};
-
 const Contents = styled.div`
   position: relative;
 `;
 
-const ToggleButton = styled.div`
+const Button = styled.div<ButtonType>`
   position: absolute;
   width: ${(props) => props.bWidth}px;
   height: ${(props) => props.bHeight}px;
@@ -89,7 +125,7 @@ const ToggleButton = styled.div`
   );
 `;
 
-const Units = styled.div`
+const Units = styled.div<UnitsType>`
   position: absolute;
   width: ${(props) => props.between}px;
   transform-origin: 0 50%;
@@ -97,7 +133,7 @@ const Units = styled.div`
     rotate(${(props) => props.fDeg}deg);
 `;
 
-const Bridge = styled.div`
+const Bridge = styled.div<BridgeType>`
   position: absolute;
   left: 0;
   width: 100%;
@@ -107,12 +143,12 @@ const Bridge = styled.div`
   transform: rotate(${(props) => props.index * props.deg}deg);
 `;
 
-const UnitWrap = styled.div`
+const UnitWrap = styled.div<UnitWrapType>`
   margin-left: auto;
   transform: rotate(${(props) => props.index * -props.deg - props.fDeg}deg);
 `;
 
-const Unit = styled.div`
+const Unit = styled.div<UnitType>`
   width: ${(props) => props.width}px;
   height: ${(props) => props.height}px;
   display: flex;
@@ -126,7 +162,7 @@ const Unit = styled.div`
     forwards;
 `;
 
-const onScale = (e, i) => keyframes`
+const onScale = (e: number, i: number) => keyframes`
   0% {
     transform: scale(${e});
   }

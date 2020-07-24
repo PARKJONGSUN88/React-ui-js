@@ -9,8 +9,8 @@ import Youtube from "../img/youtube.png";
 
 const Cover = styled.div`
   position: fixed;
-  top: 100px;
-  left: 100px;
+  top: 300px;
+  left: 300px;
 `;
 
 const testPage = () => {
