@@ -26,5 +26,6 @@ doc: https://github.com/PARKJONGSUN88/React-ui-js/tree/master/Typescript_React/s
 <br>
 **example**
 <img width="1280" style="border:black 1px solid"  alt="gif2" src="https://user-images.githubusercontent.com/50945715/88293363-df356280-cd35-11ea-9678-442aaad98146.gif">
+<img width="1280" style="border:black 1px solid"  alt="gif2" src="https://user-images.githubusercontent.com/50945715/88410902-fc3f6380-ce11-11ea-9727-b9d922cad25a.gif">
 <br>
 <br>
