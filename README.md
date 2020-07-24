@@ -19,6 +19,7 @@
 <br>
 
 ## Speed Dial
+doc: https://github.com/PARKJONGSUN88/React-ui-js/tree/master/Typescript_React/src/components
 **default**
 <img width="1280" style="border:black 1px solid"  alt="gif2" src="https://user-images.githubusercontent.com/50945715/88279200-9e7e1f00-cd1e-11ea-9c6b-49b94a71fff9.gif">
 <br>
