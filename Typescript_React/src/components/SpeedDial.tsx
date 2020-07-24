@@ -63,7 +63,7 @@ const SpeedDial: React.FC<SpeedDialType> = ({
   height = 50,
   between = 150,
   fDeg = 180,
-  deg = 30,
+  deg = -30,
   speed = 200,
   userFunc = (e: string | number | boolean | null | undefined) =>
     console.log(e),
