@@ -6,13 +6,10 @@ const IndexPage = (props) => {
   return (
     <>
       <h2>안녕하세요. React-ui-js입니다.</h2>
-      <Content onClick={() => props.history.push("/QuickButton")}>
-        QuickButton로 이동
-      </Content>
-      <Content onClick={() => props.history.push("/CardFanning")}>
+      <Content onClick={() => props.history.push("/CardFanningPage")}>
         CardFanning로 이동
       </Content>
-      <Content onClick={() => props.history.push("/testPage")}>
+      <Content onClick={() => props.history.push("/SpeedDialPage")}>
         SpeedDial로 이동
       </Content>
     </>

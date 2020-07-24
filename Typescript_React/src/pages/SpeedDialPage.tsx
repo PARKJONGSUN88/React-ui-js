@@ -9,11 +9,11 @@ import youtube from '../img/youtube.png';
 
 const Cover = styled.div`
   position: fixed;
-  top: 150px;
-  left: 100px;
+  top: 300px;
+  left: 300px;
 `;
 
-const testPage = () => {
+const SpeedDialPage = () => {
   return (
     <Cover>
       <SpeedDial
@@ -32,4 +32,4 @@ const testPage = () => {
   );
 };
 
-export default testPage;
+export default SpeedDialPage;

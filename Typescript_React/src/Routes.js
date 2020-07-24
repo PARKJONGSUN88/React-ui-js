@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import IndexPage from './pages/indexPage';
-import testPage from './pages/testPage';
+import SpeedDialPage from './pages/SpeedDialPage';
+import CardFanningPage from "./pages/CardFanningPage";
 
 class Routes extends Component {
   render() {
@@ -9,7 +10,8 @@ class Routes extends Component {
       <Router>
         <Switch>
           <Route exact path="/" component={IndexPage} />
-          <Route exact path="/testPage" component={testPage} />
+          <Route exact path="/SpeedDialPage" component={SpeedDialPage} />
+          <Route exact path="/CardFanningPage" component={CardFanningPage} />
         </Switch>
       </Router>
     );
