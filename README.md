@@ -29,9 +29,9 @@ doc: https://github.com/PARKJONGSUN88/React-ui-js/tree/master/src/components/Spe
 doc: https://github.com/PARKJONGSUN88/React-ui-js/tree/master/src/components/QuickButton
 
 **default**
-<img width="1280" style="border:black 1px solid" alt="2" src="https://user-images.githubusercontent.com/50945715/88279197-9d4cf200-cd1e-11ea-8b19-502caa710971.gif">
+<img width="1280" style="border:black 1px solid" alt="2" src="https://user-images.githubusercontent.com/50945715/88458290-edb38380-cec7-11ea-8b9f-a7bc48c4b0a3.gif">
 <br>
 **example**
-<img width="1280" style="border:black 1px solid"  alt="gif2" src="https://user-images.githubusercontent.com/50945715/88455405-fb5d0f00-ceaf-11ea-9e40-d69927e66bb8.gif">
+<img width="1280" style="border:black 1px solid"  alt="gif2" src="https://user-images.githubusercontent.com/50945715/88458291-eee4b080-cec7-11ea-96f7-5a59fb442663.gif">
 <br>
 <br>
