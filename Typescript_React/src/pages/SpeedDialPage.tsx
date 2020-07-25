@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import SpeedDial from '../components/SpeedDial';
+import SpeedDial from '../components/SpeedDial/SpeedDial';
 import mainMenu from '../img/quickmenu.png';
 import facebook from '../img/facebook.png';
 import insta from '../img/instagram.png';

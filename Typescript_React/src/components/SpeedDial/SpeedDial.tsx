@@ -113,6 +113,7 @@ const Contents = styled.div`
 
 const Button = styled.div<ButtonType>`
   position: absolute;
+  top: 0px;
   width: ${(props) => props.bWidth}px;
   height: ${(props) => props.bHeight}px;
   display: flex;
@@ -127,7 +128,9 @@ const Button = styled.div<ButtonType>`
 
 const Units = styled.div<UnitsType>`
   position: absolute;
+  top: ${(props) => props.height / 2}px;
   width: ${(props) => props.between}px;
+  height: 0px;
   transform-origin: 0 50%;
   transform: translateY(${(props) => -props.height / 2}px)
     rotate(${(props) => props.fDeg}deg);
@@ -135,10 +138,11 @@ const Units = styled.div<UnitsType>`
 
 const Bridge = styled.div<BridgeType>`
   position: absolute;
-  left: 0;
+  top: 0px;
   width: 100%;
   height: 100%;
   display: flex;
+  align-items: center;
   transform-origin: 0 50%;
   transform: rotate(${(props) => props.index * props.deg}deg);
 `;
