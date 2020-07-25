@@ -4,7 +4,7 @@
 <br>
 
 ## Card Fanning
-doc: https://github.com/PARKJONGSUN88/React-ui-js/tree/master/Typescript_React/src/components
+doc: https://github.com/PARKJONGSUN88/React-ui-js/tree/master/src/components/CardFanning
 
 **default**
 <img width="1280" style="border:black 1px solid" alt="2" src="https://user-images.githubusercontent.com/50945715/88279198-9de58880-cd1e-11ea-9ed4-467e6f480380.gif">
@@ -15,7 +15,7 @@ doc: https://github.com/PARKJONGSUN88/React-ui-js/tree/master/Typescript_React/s
 <br>
 
 ## Speed Dial
-doc: https://github.com/PARKJONGSUN88/React-ui-js/tree/master/Typescript_React/src/components
+doc: https://github.com/PARKJONGSUN88/React-ui-js/tree/master/src/components/SpeedDial
 
 **default**
 <img width="1280" style="border:black 1px solid"  alt="gif2" src="https://user-images.githubusercontent.com/50945715/88279200-9e7e1f00-cd1e-11ea-9c6b-49b94a71fff9.gif">
