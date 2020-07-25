@@ -7,7 +7,7 @@
 doc: https://github.com/PARKJONGSUN88/React-ui-js/tree/master/src/components/CardFanning
 
 **default**
-<img width="1280" style="border:black 1px solid" alt="2" src="https://user-images.githubusercontent.com/50945715/88279198-9de58880-cd1e-11ea-9ed4-467e6f480380.gif">
+<img width="1280" style="border:black 1px solid" alt="2" src="https://user-images.githubusercontent.com/50945715/88458396-c4dfbe00-cec8-11ea-9577-3c83656ec05c.gif">
 <br>
 **example**
 <img width="1280" style="border:black 1px solid"  alt="gif2" src="https://user-images.githubusercontent.com/50945715/88453550-03fb1880-cea3-11ea-9693-1bc5114cf4ed.gif">
@@ -18,7 +18,7 @@ doc: https://github.com/PARKJONGSUN88/React-ui-js/tree/master/src/components/Car
 doc: https://github.com/PARKJONGSUN88/React-ui-js/tree/master/src/components/SpeedDial
 
 **default**
-<img width="1280" style="border:black 1px solid"  alt="gif2" src="https://user-images.githubusercontent.com/50945715/88279200-9e7e1f00-cd1e-11ea-9c6b-49b94a71fff9.gif">
+<img width="1280" style="border:black 1px solid"  alt="gif2" src="https://user-images.githubusercontent.com/50945715/88458397-c610eb00-cec8-11ea-8c8c-2ea00853900f.gif">
 <br>
 **example**
 <img width="1280" style="border:black 1px solid"  alt="gif2" src="https://user-images.githubusercontent.com/50945715/88410902-fc3f6380-ce11-11ea-9727-b9d922cad25a.gif">
