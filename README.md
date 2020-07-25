@@ -26,7 +26,12 @@ doc: https://github.com/PARKJONGSUN88/React-ui-js/tree/master/src/components/Spe
 <br>
 
 ## Quick Button
+doc: https://github.com/PARKJONGSUN88/React-ui-js/tree/master/src/components/QuickButton
+
 **default**
 <img width="1280" style="border:black 1px solid" alt="2" src="https://user-images.githubusercontent.com/50945715/88279197-9d4cf200-cd1e-11ea-8b19-502caa710971.gif">
+<br>
+**example**
+<img width="1280" style="border:black 1px solid"  alt="gif2" src="https://user-images.githubusercontent.com/50945715/88455405-fb5d0f00-ceaf-11ea-9e40-d69927e66bb8.gif">
 <br>
 <br>
