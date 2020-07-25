@@ -9,8 +9,8 @@ import youtube from '../img/youtube.png';
 
 const Cover = styled.div`
   position: fixed;
-  top: 300px;
-  left: 300px;
+  top: 50px;
+  left: 50px;
 `;
 
 const QuickButtonPage = () => {
