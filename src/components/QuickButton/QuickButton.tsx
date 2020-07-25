@@ -4,6 +4,8 @@ import styled, { css, keyframes } from 'styled-components';
 
 interface QuickButtonType {
   button?: string | number | React.ReactElement;
+  bWidth?: number;
+  bHeight?: number;
   dials?: Array<dialsType>;
   width?: number;
   height?: number;
@@ -18,34 +20,39 @@ interface dialsType {
   icon: React.ReactElement | string | number;
 }
 
-interface ContentsType {
-  direction: 'left' | 'right' | 'up' | 'down';
-}
-
 interface ButtonType {
-  width: number;
-  height: number;
+  bWidth: number;
+  bHeight: number;
 }
 
 interface UnitsType {
-  width: number;
-  height: number;
+  bWidth: number;
+  bHeight: number;
   direction: 'left' | 'right' | 'up' | 'down';
 }
 
-interface UnitType {
+interface UnitWrapType {
   isToggle: boolean;
+  bWidth: number;
+  bHeight: number;
   width: number;
   height: number;
   direction: 'left' | 'right' | 'up' | 'down';
-  between: number;
-  speed: number;
   index: number;
   length: number;
+  between: number;
+  speed: number;
+}
+
+interface UnitType {
+  width: number;
+  height: number;
 }
 
 const QuickButton: React.FC<QuickButtonType> = ({
   button = 'button',
+  bWidth = 100,
+  bHeight = 100,
   dials = [
     { url: '/url1', icon: 'icon1' },
     { url: '/url2', icon: 'icon2' },
@@ -53,7 +60,7 @@ const QuickButton: React.FC<QuickButtonType> = ({
   direction = 'right',
   width = 50,
   height = 50,
-  between = 10,
+  between = 20,
   speed = 200,
   userFunc = (e: string | number | boolean | null | undefined) =>
     console.log(e),
@@ -61,19 +68,21 @@ const QuickButton: React.FC<QuickButtonType> = ({
   const [isToggle, setIsToggle] = useState(false);
 
   return (
-    <Contents direction={direction}>
+    <Contents>
       <Button
-        width={width}
-        height={height}
+        bWidth={bWidth}
+        bHeight={bHeight}
         onClick={() => setIsToggle(!isToggle)}
       >
         {button}
       </Button>
-      <Units width={width} height={height} direction={direction}>
+      <Units bWidth={bWidth} bHeight={bHeight} direction={direction}>
         {dials.map((item, index) => (
-          <Unit
+          <UnitWrap
             key={index}
             isToggle={isToggle}
+            bWidth={bWidth}
+            bHeight={bHeight}
             width={width}
             height={height}
             direction={direction}
@@ -81,13 +90,18 @@ const QuickButton: React.FC<QuickButtonType> = ({
             length={dials.length}
             between={between}
             speed={speed}
-            onClick={() => {
-              userFunc(dials[index].url);
-              setIsToggle(false);
-            }}
           >
-            {item.icon}
-          </Unit>
+            <Unit
+              width={width}
+              height={height}
+              onClick={() => {
+                userFunc(dials[index].url);
+                setIsToggle(false);
+              }}
+            >
+              {item.icon}
+            </Unit>
+          </UnitWrap>
         ))}
       </Units>
     </Contents>
@@ -96,20 +110,14 @@ const QuickButton: React.FC<QuickButtonType> = ({
 
 export default QuickButton;
 
-const Contents = styled.div<ContentsType>`
+const Contents = styled.div`
   position: relative;
   display: flex;
-  flex-direction: ${(props) => {
-    if (props.direction === 'up') return 'column-reverse';
-    if (props.direction === 'down') return 'column';
-    if (props.direction === 'left') return 'row-reverse';
-    if (props.direction === 'right') return 'row';
-  }};
 `;
 
 const Button = styled.div<ButtonType>`
-  width: ${(props) => props.width}px;
-  height: ${(props) => props.height}px;
+  width: ${(props) => props.bWidth}px;
+  height: ${(props) => props.bHeight}px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -120,19 +128,19 @@ const Units = styled.div<UnitsType>`
   ${(props) => {
     if (props.direction === 'up')
       return css`
-        bottom: ${props.height}px;
+        bottom: ${props.bHeight}px;
       `;
     if (props.direction === 'down')
       return css`
-        top: ${props.height}px;
+        top: ${props.bHeight}px;
       `;
     if (props.direction === 'left')
       return css`
-        right: ${props.width}px;
+        right: ${props.bWidth}px;
       `;
     if (props.direction === 'right')
       return css`
-        left: ${props.width}px;
+        left: ${props.bWidth}px;
       `;
   }}
   height: 0px;
@@ -145,36 +153,50 @@ const Units = styled.div<UnitsType>`
   }};
 `;
 
-const Unit = styled.div<UnitType>`
+const UnitWrap = styled.div<UnitWrapType>`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: ${(props) => props.width}px;
-  height: ${(props) => props.height}px;
   ${(props) => {
     if (props.direction === 'up')
       return css`
         margin-bottom: ${props.between}px;
+        width: ${props.bWidth}px;
+        height: ${props.height}px;
       `;
     if (props.direction === 'down')
       return css`
         margin-top: ${props.between}px;
+        width: ${props.bWidth}px;
+        height: ${props.height}px;
       `;
     if (props.direction === 'left')
       return css`
         margin-right: ${props.between}px;
+        width: ${props.width}px;
+        height: ${props.bHeight}px;
       `;
     if (props.direction === 'right')
       return css`
         margin-left: ${props.between}px;
+        width: ${props.width}px;
+        height: ${props.bHeight}px;
       `;
   }} 
   animation: ${(props) => (props.isToggle ? onScale(0, 1) : onScale(1, 0))}
     ${(props) =>
       props.isToggle
         ? (props.index + 1) * props.speed
-        : (props.length - props.index) * props.speed}ms
+        : (props.length - props.index) * props.speed}ms 
     forwards;
+`;
+
+const Unit = styled.div<UnitType>`
+  width: ${(props) => props.width}px;
+  height: ${(props) => props.height}px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 const onScale = (e: number, i: number) => keyframes`

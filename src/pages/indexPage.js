@@ -13,7 +13,7 @@ const IndexPage = ({history}) => {
         SpeedDial로 이동
       </Content>
       <Content onClick={() => history.push('/QuickButtonPage')}>
-        SpeedDial로 이동
+        QuickButton로 이동
       </Content>
     </>
   );
