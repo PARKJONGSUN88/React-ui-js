@@ -2,7 +2,7 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import styled from 'styled-components';
 
-const IndexPage = ({history}) => {
+const IndexPage = ({ history }) => {
   return (
     <>
       <h2>안녕하세요. React-ui-js입니다.</h2>
@@ -14,6 +14,9 @@ const IndexPage = ({history}) => {
       </Content>
       <Content onClick={() => history.push('/QuickButtonPage')}>
         QuickButton로 이동
+      </Content>
+      <Content onClick={() => history.push('/RollingBoadrPage')}>
+        RollingBoadrPage로 이동
       </Content>
     </>
   );
