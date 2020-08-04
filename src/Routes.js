@@ -4,7 +4,7 @@ import IndexPage from './pages/indexPage';
 import SpeedDialPage from './pages/SpeedDialPage';
 import CardFanningPage from './pages/CardFanningPage';
 import QuickButtonPage from './pages/QuickButtonPage';
-import RollingBoadrPage from './components/RollingBoard/RollingBoard';
+import RelayBoadrPage from './pages/RelayBoardPage';
 
 class Routes extends Component {
   render() {
@@ -15,7 +15,7 @@ class Routes extends Component {
           <Route exact path="/SpeedDialPage" component={SpeedDialPage} />
           <Route exact path="/CardFanningPage" component={CardFanningPage} />
           <Route exact path="/QuickButtonPage" component={QuickButtonPage} />
-          <Route exact path="/RollingBoadrPage" component={RollingBoadrPage} />
+          <Route exact path="/RelayBoadrPage" component={RelayBoadrPage} />
         </Switch>
       </Router>
     );

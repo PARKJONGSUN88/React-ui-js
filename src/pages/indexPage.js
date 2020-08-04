@@ -15,8 +15,8 @@ const IndexPage = ({ history }) => {
       <Content onClick={() => history.push('/QuickButtonPage')}>
         QuickButton로 이동
       </Content>
-      <Content onClick={() => history.push('/RollingBoadrPage')}>
-        RollingBoadrPage로 이동
+      <Content onClick={() => history.push('/RelayBoadrPage')}>
+        RelayBoadrPage로 이동
       </Content>
     </>
   );
