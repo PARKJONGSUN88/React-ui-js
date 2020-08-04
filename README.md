@@ -35,3 +35,16 @@ doc: https://github.com/PARKJONGSUN88/React-ui-js/tree/master/src/components/Qui
 <img width="1280" style="border:black 1px solid"  alt="gif2" src="https://user-images.githubusercontent.com/50945715/88458291-eee4b080-cec7-11ea-96f7-5a59fb442663.gif">
 <br>
 <br>
+
+
+## Relay Board
+doc: https://github.com/PARKJONGSUN88/React-ui-js/tree/master/src/components/RelayBoard
+
+**default**
+<img width="1280" style="border:black 1px solid" alt="2" src="https://user-images.githubusercontent.com/50945715/89317140-f110f100-d6b7-11ea-8b6b-8c9e74ee81ed.gif">
+<br>
+**example**
+<img width="1280" style="border:black 1px solid"  alt="gif2" src="https://user-images.githubusercontent.com/50945715/89317143-f2421e00-d6b7-11ea-94d7-cac22333e1e0.gif">
+<br>
+<br>
+
