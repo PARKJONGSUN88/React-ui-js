@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useState } from 'react';
-import styled, { keyframes } from 'styled-components';
+import styled, { keyframes, css } from 'styled-components';
 
 interface RelayBoardType {
   ViewWidht?: number;
@@ -89,44 +89,68 @@ const RelayBoard: React.FC<RelayBoardType> = ({
 export default RelayBoard;
 
 const Contents = styled.div<ContentsType>`
-  width: ${(props) => props.ViewWidht}px;
-  height: ${(props) => props.ViewHeight}px;
+  width: ${({ ViewWidht }) => ViewWidht}px;
+  height: ${({ ViewHeight }) => ViewHeight}px;
   overflow: hidden;
   display: flex;
-  align-items: ${(props) =>
-    props.direction === 'column' ? 'flex-end' : 'center'};
-  justify-content: ${(props) =>
-    props.direction === 'column' ? 'center' : 'flex-end'};
+  ${({ direction }) => {
+    if (direction === 'column')
+      return css`
+        align-items: flex-end;
+        justify-content: center;
+      `;
+    else
+      return css`
+        align-items: center;
+        justify-content: flex-end;
+      `;
+  }};
 `;
 
 const Items = styled.div<ItemsType>`
-  width: ${(props) =>
-    props.direction === 'column' ? props.width : props.width * props.count}px;
-  height: ${(props) =>
-    props.direction === 'column' ? props.height * props.count : props.height}px;
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: ${(props) => props.direction};
-  animation: ${(props) =>
-      props.direction === 'column'
-        ? onMove(
-            props.height * props.count - props.height * 0.25,
-            -props.ViewHeight + props.height * 0.25,
+  ${({
+    direction,
+    width,
+    height,
+    count,
+    ViewWidht,
+    ViewHeight,
+    speed,
+    toggle,
+  }) => {
+    if (direction === 'column')
+      return css`
+        width: ${width}px;
+        height: ${height * count}px;
+        flex-direction: ${direction};
+        animation: ${onMove(
+            height * count - height * 0.25,
+            -ViewHeight + height * 0.25,
             0,
             0,
-          )
-        : onMove(
-            0,
-            0,
-            props.width * props.count - props.width * 0.25,
-            -props.ViewWidht + props.width * 0.25,
           )}
-    ${(props) => props.speed}s linear infinite
-    ${(props) => (props.toggle ? 'running' : 'paused')};
+          ${speed}s ${toggle ? 'running' : 'paused'} linear infinite;
+      `;
+    else
+      return css`
+        width: ${width * count}px;
+        height: ${height}px;
+        flex-direction: ${direction};
+        animation: ${onMove(
+            0,
+            0,
+            width * count - width * 0.25,
+            -ViewWidht + width * 0.25,
+          )}
+          ${speed}s ${toggle ? 'running' : 'paused'} linear infinite;
+      `;
+  }};
   & > div {
-    width: ${(props) => props.width}px;
-    height: ${(props) => props.height}px;
+    width: ${({ width }) => width}px;
+    height: ${({ height }) => height}px;
     display: flex;
     align-items: center;
     justify-content: center;

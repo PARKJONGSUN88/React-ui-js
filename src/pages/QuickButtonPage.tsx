@@ -9,14 +9,15 @@ import youtube from '../img/youtube.png';
 
 const Cover = styled.div`
   position: fixed;
-  top: 50px;
-  left: 50px;
+  top: 100px;
+  left: 100px;
 `;
 
 const QuickButtonPage = () => {
   return (
     <Cover>
       <QuickButton
+        direction={'right'}
         button={<img src={mainMenu} alt="" width="100%" />}
         dials={[
           { url: '페이스북', icon: <img src={facebook} alt="" width="100%" /> },

@@ -116,8 +116,8 @@ const Contents = styled.div`
 `;
 
 const Button = styled.div<ButtonType>`
-  width: ${(props) => props.bWidth}px;
-  height: ${(props) => props.bHeight}px;
+  width: ${({ bWidth }) => bWidth}px;
+  height: ${({ bHeight }) => bHeight}px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -125,31 +125,29 @@ const Button = styled.div<ButtonType>`
 
 const Units = styled.div<UnitsType>`
   position: absolute;
-  ${(props) => {
-    if (props.direction === 'up')
-      return css`
-        bottom: ${props.bHeight}px;
-      `;
-    if (props.direction === 'down')
-      return css`
-        top: ${props.bHeight}px;
-      `;
-    if (props.direction === 'left')
-      return css`
-        right: ${props.bWidth}px;
-      `;
-    if (props.direction === 'right')
-      return css`
-        left: ${props.bWidth}px;
-      `;
-  }}
-  height: 0px;
   display: flex;
-  flex-direction: ${(props) => {
-    if (props.direction === 'up') return 'column-reverse';
-    if (props.direction === 'down') return 'column';
-    if (props.direction === 'left') return 'row-reverse';
-    if (props.direction === 'right') return 'row';
+  height: 0px;
+  ${({ direction, bHeight, bWidth }) => {
+    if (direction === 'up')
+      return css`
+        bottom: ${bHeight}px;
+        flex-direction: column-reverse;
+      `;
+    if (direction === 'down')
+      return css`
+        top: ${bHeight}px;
+        flex-direction: column;
+      `;
+    if (direction === 'left')
+      return css`
+        right: ${bWidth}px;
+        flex-direction: row-reverse;
+      `;
+    if (direction === 'right')
+      return css`
+        left: ${bWidth}px;
+        flex-direction: row;
+      `;
   }};
 `;
 
@@ -157,43 +155,41 @@ const UnitWrap = styled.div<UnitWrapType>`
   display: flex;
   align-items: center;
   justify-content: center;
-  ${(props) => {
-    if (props.direction === 'up')
+  ${({ direction, between, bWidth, height, width, bHeight }) => {
+    if (direction === 'up')
       return css`
-        margin-bottom: ${props.between}px;
-        width: ${props.bWidth}px;
-        height: ${props.height}px;
+        width: ${bWidth}px;
+        height: ${height}px;
+        margin-bottom: ${between}px;
       `;
-    if (props.direction === 'down')
+    if (direction === 'down')
       return css`
-        margin-top: ${props.between}px;
-        width: ${props.bWidth}px;
-        height: ${props.height}px;
+        width: ${bWidth}px;
+        height: ${height}px;
+        margin-top: ${between}px;
       `;
-    if (props.direction === 'left')
+    if (direction === 'left')
       return css`
-        margin-right: ${props.between}px;
-        width: ${props.width}px;
-        height: ${props.bHeight}px;
+        width: ${width}px;
+        height: ${bHeight}px;
+        margin-right: ${between}px;
       `;
-    if (props.direction === 'right')
+    if (direction === 'right')
       return css`
-        margin-left: ${props.between}px;
-        width: ${props.width}px;
-        height: ${props.bHeight}px;
+        width: ${width}px;
+        height: ${bHeight}px;
+        margin-left: ${between}px;
       `;
-  }} 
-  animation: ${(props) => (props.isToggle ? onScale(0, 1) : onScale(1, 0))}
-    ${(props) =>
-      props.isToggle
-        ? (props.index + 1) * props.speed
-        : (props.length - props.index) * props.speed}ms 
+  }};
+  animation: ${({ isToggle }) => (isToggle ? onScale(0, 1) : onScale(1, 0))}
+    ${({ isToggle, index, speed, length }) =>
+      isToggle ? (index + 1) * speed : (length - index) * speed}ms
     forwards;
 `;
 
 const Unit = styled.div<UnitType>`
-  width: ${(props) => props.width}px;
-  height: ${(props) => props.height}px;
+  width: ${({ width }) => width}px;
+  height: ${({ height }) => height}px;
   display: flex;
   align-items: center;
   justify-content: center;

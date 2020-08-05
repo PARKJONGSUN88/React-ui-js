@@ -124,26 +124,26 @@ const Contents = styled.div`
 const Button = styled.div<ButtonType>`
   position: absolute;
   top: 0px;
-  width: ${(props) => props.bWidth}px;
-  height: ${(props) => props.bHeight}px;
+  width: ${({ bWidth }) => bWidth}px;
+  height: ${({ bHeight }) => bHeight}px;
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 2;
   transform: translate(
-    ${(props) => -props.bWidth / 2}px,
-    ${(props) => -props.bHeight / 2}px
+    ${({ bWidth }) => -bWidth / 2}px,
+    ${({ bHeight }) => -bHeight / 2}px
   );
 `;
 
 const Units = styled.div<UnitsType>`
   position: absolute;
-  top: ${(props) => props.height / 2}px;
-  width: ${(props) => props.between}px;
+  top: ${({ height }) => height / 2}px;
+  width: ${({ between }) => between}px;
   height: 0px;
   transform-origin: 0 50%;
-  transform: translateY(${(props) => -props.height / 2}px)
-    rotate(${(props) => props.fDeg}deg);
+  transform: translateY(${({ height }) => -height / 2}px)
+    rotate(${({ fDeg }) => fDeg}deg);
 `;
 
 const Bridge = styled.div<BridgeType>`
@@ -154,31 +154,29 @@ const Bridge = styled.div<BridgeType>`
   display: flex;
   align-items: center;
   transform-origin: 0 50%;
-  animation: ${(props) =>
-      props.isToggle
-        ? onRotate(0, props.index * props.deg)
-        : onRotate(props.index * props.deg, 0)}
-    ${(props) => props.speed}ms forwards;
+  animation: ${({ isToggle, index, deg }) =>
+      isToggle ? onRotate(0, index * deg) : onRotate(index * deg, 0)}
+    ${({ speed }) => speed}ms forwards;
 `;
 
 const UnitWrap = styled.div<UnitWrapType>`
   margin-left: auto;
-  animation: ${(props) =>
-      props.isToggle
-        ? onRotate(-props.fDeg, props.index * -props.deg - props.fDeg)
-        : onRotate(props.index * -props.deg - props.fDeg, -props.fDeg)}
-    ${(props) => props.speed}ms forwards;
+  animation: ${({ isToggle, fDeg, index, deg }) =>
+      isToggle
+        ? onRotate(-fDeg, index * -deg - fDeg)
+        : onRotate(index * -deg - fDeg, -fDeg)}
+    ${({ speed }) => speed}ms forwards;
 `;
 
 const Unit = styled.div<UnitType>`
-  width: ${(props) => props.width}px;
-  height: ${(props) => props.height}px;
+  width: ${({ width }) => width}px;
+  height: ${({ height }) => height}px;
   display: flex;
   align-items: center;
   justify-content: center;
-  animation: ${(props) => (props.isToggle ? onScale(0, 1) : onScale(1, 0))}
+  animation: ${({ isToggle }) => (isToggle ? onScale(0, 1) : onScale(1, 0))}
     forwards;
-  animation-delay: ${(props) => (props.isToggle ? 0 : props.speed)}ms;
+  animation-delay: ${({ isToggle, speed }) => (isToggle ? 0 : speed)}ms;
 `;
 
 const onRotate = (e: number, i: number) => keyframes`

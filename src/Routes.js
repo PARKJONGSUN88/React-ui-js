@@ -4,7 +4,8 @@ import IndexPage from './pages/indexPage';
 import SpeedDialPage from './pages/SpeedDialPage';
 import CardFanningPage from './pages/CardFanningPage';
 import QuickButtonPage from './pages/QuickButtonPage';
-import RelayBoadrPage from './pages/RelayBoardPage';
+import RelayBoardPage from './pages/RelayBoardPage';
+import JellyPopPage from './components/JellyPop/JellyPop';
 
 class Routes extends Component {
   render() {
@@ -15,7 +16,8 @@ class Routes extends Component {
           <Route exact path="/SpeedDialPage" component={SpeedDialPage} />
           <Route exact path="/CardFanningPage" component={CardFanningPage} />
           <Route exact path="/QuickButtonPage" component={QuickButtonPage} />
-          <Route exact path="/RelayBoadrPage" component={RelayBoadrPage} />
+          <Route exact path="/RelayBoardPage" component={RelayBoardPage} />
+          <Route exact path="/JellyPopPage" component={JellyPopPage} />
         </Switch>
       </Router>
     );
