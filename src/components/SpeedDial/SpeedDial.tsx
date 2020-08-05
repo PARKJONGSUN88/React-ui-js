@@ -114,26 +114,26 @@ const Contents = styled.div`
 const Button = styled.div<ButtonType>`
   position: absolute;
   top: 0px;
-  width: ${(props) => props.bWidth}px;
-  height: ${(props) => props.bHeight}px;
+  width: ${({ bWidth }) => bWidth}px;
+  height: ${({ bHeight }) => bHeight}px;
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 2;
   transform: translate(
-    ${(props) => -props.bWidth / 2}px,
-    ${(props) => -props.bHeight / 2}px
+    ${({ bWidth }) => -bWidth / 2}px,
+    ${({ bHeight }) => -bHeight / 2}px
   );
 `;
 
 const Units = styled.div<UnitsType>`
   position: absolute;
-  top: ${(props) => props.height / 2}px;
-  width: ${(props) => props.between}px;
+  top: ${({ height }) => height / 2}px;
+  width: ${({ between }) => between}px;
   height: 0px;
   transform-origin: 0 50%;
-  transform: translateY(${(props) => -props.height / 2}px)
-    rotate(${(props) => props.fDeg}deg);
+  transform: translateY(${({ height }) => -height / 2}px)
+    rotate(${({ fDeg }) => fDeg}deg);
 `;
 
 const Bridge = styled.div<BridgeType>`
@@ -144,25 +144,23 @@ const Bridge = styled.div<BridgeType>`
   display: flex;
   align-items: center;
   transform-origin: 0 50%;
-  transform: rotate(${(props) => props.index * props.deg}deg);
+  transform: rotate(${({ index, deg }) => index * deg}deg);
 `;
 
 const UnitWrap = styled.div<UnitWrapType>`
   margin-left: auto;
-  transform: rotate(${(props) => props.index * -props.deg - props.fDeg}deg);
+  transform: rotate(${({ index, deg, fDeg }) => index * -deg - fDeg}deg);
 `;
 
 const Unit = styled.div<UnitType>`
-  width: ${(props) => props.width}px;
-  height: ${(props) => props.height}px;
+  width: ${({ width }) => width}px;
+  height: ${({ height }) => height}px;
   display: flex;
   align-items: center;
   justify-content: center;
-  animation: ${(props) => (props.isToggle ? onScale(0, 1) : onScale(1, 0))}
-    ${(props) =>
-      props.isToggle
-        ? (props.index + 1) * props.speed
-        : (props.length - props.index) * props.speed}ms
+  animation: ${({ isToggle }) => (isToggle ? onScale(0, 1) : onScale(1, 0))}
+    ${({ isToggle, index, speed, length }) =>
+      isToggle ? (index + 1) * speed : (length - index) * speed}ms
     forwards;
 `;
 

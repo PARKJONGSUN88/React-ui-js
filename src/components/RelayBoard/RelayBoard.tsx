@@ -14,8 +14,8 @@ interface RelayBoardType {
 }
 
 interface ArrayType {
-  item: string | number | null;
-  url?: string | number | null;
+  item: React.ReactElement | string | number;
+  url?: string | number | boolean | null | undefined;
 }
 
 interface ContentsType {
@@ -50,7 +50,8 @@ const RelayBoard: React.FC<RelayBoardType> = ({
   width = 400,
   height = 50,
   speed = 10,
-  userFunc = (e: number) => console.log(e),
+  userFunc = (e: string | number | boolean | null | undefined) =>
+    console.log(e),
 }) => {
   const [toggle, setToggle] = useState(true);
 
