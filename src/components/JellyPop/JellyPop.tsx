@@ -53,12 +53,12 @@ const Items = styled.div<ItemsType>`
   ${({ toggle }) => {
     if (toggle)
       return css`
-        animation: ${onMove(50, 200)} 1s cubic-bezier(0.75, -0.75, 0.25, 1.75)
+        animation: ${onMove(30, 200)} 1s cubic-bezier(0.75, -0.75, 0.25, 1.75)
           forwards;
       `;
     else
       return css`
-        animation: ${onMove(200, 50)} 1s cubic-bezier(0.75, -0.75, 0.25, 1.75)
+        animation: ${onMove(200, 30)} 1s cubic-bezier(0.75, -0.75, 0.25, 1.75)
           forwards;
       `;
   }}
