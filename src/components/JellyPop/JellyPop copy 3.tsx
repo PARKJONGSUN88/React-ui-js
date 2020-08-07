@@ -14,11 +14,7 @@ interface JellyPopType {
 }
 
 interface ContentsType {
-  width: number;
-  height: number;
   direction: 'up' | 'down' | 'left' | 'right';
-  JellyWidth: number;
-  JellyHeight: number;
 }
 
 interface ButtonType {
@@ -42,20 +38,14 @@ const JellyPop: React.FC<JellyPopType> = ({
   height = 100,
   button = '클릭하세요',
   items = '내용입니다',
-  direction = 'right',
+  direction = 'down',
   JellyWidth = 100,
   JellyHeight = 100,
   speed = 500,
 }) => {
   const [toggle, setToggle] = useState(false);
   return (
-    <Contents
-      width={width}
-      height={height}
-      direction={direction}
-      JellyWidth={JellyWidth}
-      JellyHeight={JellyHeight}
-    >
+    <Contents direction={direction}>
       <Button
         width={width}
         height={height}
@@ -92,15 +82,11 @@ const JellyPop: React.FC<JellyPopType> = ({
 export default JellyPop;
 
 const Contents = styled.div<ContentsType>`
-  position:fixed;
-  top:200px;
-  left:200px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  border: 3px solid blue;
-  transform-origin: 50px 50px;
+  /* display: flex; */
+  /* align-items: center; */
+  /* justify-content: center; */
+  /* flex-direction: column; */
+  border: 1px solid skyblue;
   ${({ direction }) => {
     if (direction === 'down')
       return css`
@@ -119,12 +105,6 @@ const Contents = styled.div<ContentsType>`
         transform: rotate(90deg);
       `;
   }}
-  width: ${({ width, height, direction, JellyWidth, JellyHeight }) =>
-    direction === 'down' || direction === 'up' ? width : height}px;
-  /* height: ${({ width, height, direction }) =>
-    direction === 'down' || direction === 'up' ? height : width}px; */
-      /* height: ${({ width, height, direction }) =>
-        direction === 'right' || direction === 'left' ? width : width}px; */
 `;
 
 const Button = styled.div<ButtonType>`
@@ -135,7 +115,7 @@ const Button = styled.div<ButtonType>`
   display: flex;
   align-items: center;
   justify-content: center;
-  /* border: 1px solid black; */
+  border: 1px solid black;
   & > div {
     ${({ direction }) => {
       if (direction === 'down')
@@ -195,7 +175,7 @@ const Items = styled.div<ItemsType>`
           cubic-bezier(0.75, -0.5, 0, 0.5) forwards;
       `;
   }};
-  /* border: 1px solid pink; */
+  border: 1px solid pink;
 
   & > div {
     ${({ direction }) => {
