@@ -42,12 +42,12 @@ const JellyPop: React.FC<JellyPopType> = ({
   height = 100,
   button = '클릭하세요',
   items = '내용입니다내용입니다내용입니다내용입니다내용입니다내용입니다',
-  direction = 'down',
-  JellyWidth = 200,
+  direction = 'right',
+  JellyWidth = 300,
   JellyHeight = 100,
-  speed = 2000,
+  speed = 500,
 }) => {
-  const [toggle, setToggle] = useState(false);
+  const [toggle, setToggle] = useState(true);
   return (
     <>
       <Test
@@ -106,39 +106,40 @@ const Test = styled.div<ItemsType>`
   height: 100px;
   /* width: 100%; */
   border: 5px solid red;
-  ${({ direction, toggle, width, height, JellyWidth, JellyHeight, speed }) => {
+  ${({ direction, toggle, JellyWidth, JellyHeight, speed }) => {
     if ((direction === 'down' || direction === 'up') && toggle)
       return css`
-        animation: ${onMove(height, height + JellyHeight)} ${speed}ms
+        animation: ${onMove(0, JellyHeight)} ${speed}ms
           cubic-bezier(0.75, 0, 0.25, 1.75) forwards;
       `;
     if ((direction === 'down' || direction === 'up') && !toggle)
       return css`
-        animation: ${onMove(height + JellyHeight, height)} ${speed}ms
+        animation: ${onMove(JellyHeight, 0)} ${speed}ms
           cubic-bezier(0.75, -0.75, 0.25, 1) forwards;
       `;
     if ((direction === 'right' || direction === 'left') && toggle)
       return css`
-        animation: ${onMove2(width, width + JellyWidth)} ${speed}ms
+        animation: ${onMove2(100, 400)} ${speed}ms
           cubic-bezier(0.75, 0, 0.25, 1.75) forwards;
       `;
     if ((direction === 'right' || direction === 'left') && !toggle)
       return css`
-        animation: ${onMove2(width + JellyWidth, width)} ${speed}ms
+        animation: ${onMove2(400, 100)} ${speed}ms
           cubic-bezier(0.75, -0.75, 0.25, 1) forwards;
       `;
   }};
 `;
 
 const Contents = styled.div<ContentsType>`
-  width: ${({ width, height, direction }) =>
-    direction === 'down' || direction === 'up' ? width : height}px;
+    /* position:absolute; */
+    /* left:0px; */
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   flex-direction: column;
-  transform-origin: top left;
-  ${({ direction, width, height }) => {
+  border: 3px solid blue;
+  transform-origin: 50px 50px;
+  ${({ direction }) => {
     if (direction === 'down')
       return css`
         transform: rotate(0deg);
@@ -149,18 +150,22 @@ const Contents = styled.div<ContentsType>`
       `;
     if (direction === 'right')
       return css`
-        transform: rotate(-90deg) translateX(${-height + 'px'});
+        transform: rotate(-90deg);
       `;
     if (direction === 'left')
       return css`
         transform: rotate(90deg);
       `;
   }}
-  border: 3px solid blue;
+  width: ${({ width, height, direction, JellyWidth, JellyHeight }) =>
+    direction === 'down' || direction === 'up' ? width : height}px;
+  /* height: ${({ width, height, direction }) =>
+    direction === 'down' || direction === 'up' ? height : width}px; */
+      /* height: ${({ width, height, direction }) =>
+        direction === 'right' || direction === 'left' ? width : width}px; */
 `;
 
 const Button = styled.div<ButtonType>`
-  margin-bottom: auto;
   width: ${({ width, height, direction }) =>
     direction === 'down' || direction === 'up' ? width : height}px;
   height: ${({ width, height, direction }) =>
@@ -168,6 +173,7 @@ const Button = styled.div<ButtonType>`
   display: flex;
   align-items: center;
   justify-content: center;
+  /* border: 1px solid black; */
   & > div {
     ${({ direction }) => {
       if (direction === 'down')
@@ -191,7 +197,6 @@ const Button = styled.div<ButtonType>`
 `;
 
 const Items = styled.div<ItemsType>`
-margin-top:auto;
   overflow: hidden;
   /* top: ${({ width, height, direction }) =>
     direction === 'down' || direction === 'up' ? height : width}px; */
@@ -228,17 +233,21 @@ margin-top:auto;
           cubic-bezier(0.75, -0.75, 0.25, 1) forwards;
       `;
   }};
-
+  border: 1px solid pink;
+  /* height: ${({ JellyWidth, JellyHeight, direction }) =>
+    direction === 'down' || direction === 'up' ? JellyWidth : JellyHeight}px;*/
     width: ${({ JellyWidth, JellyHeight, direction }) =>
-      direction === 'down' || direction === 'up' ? JellyWidth : JellyHeight}px; 
+      direction === 'down' || direction === 'up'
+        ? JellyHeight
+        : JellyHeight}px; 
+/* background-color:pink; */
 position: relative;
       
   & > div {
-    background-color: gray;
+    border: 1px solid gray;
     position:absolute;
-    bottom:0px;
-    /* right:-100px;
-    bottom:100px; */
+    right:-100px;
+    bottom:100px;
     /* background-color:pink;
     height: ${({ JellyWidth, JellyHeight, direction }) =>
       direction === 'down' || direction === 'up' ? JellyWidth : JellyHeight}px;
@@ -246,13 +255,13 @@ position: relative;
       direction === 'down' || direction === 'up'
         ? JellyHeight
         : JellyWidth}px; */
-  width:${({ JellyWidth }) => JellyWidth}px;
-    height:${({ JellyHeight }) => JellyHeight}px;
-    overflow:hidden;
+    width:300px;
+    height:100px;
+    /* overflow:hidden; */
     display:flex;
     align-items:center;
     justify-content:center;
-    ${({ direction, width, height, JellyWidth }) => {
+    ${({ direction }) => {
       if (direction === 'down')
         return css`
           transform: rotate(0deg);
@@ -263,8 +272,7 @@ position: relative;
         `;
       if (direction === 'right')
         return css`
-          transform: rotate(90deg)
-            translateX(${(height - JellyWidth) / 2 + 'px'});
+          transform: rotate(90deg);
         `;
       if (direction === 'left')
         return css`

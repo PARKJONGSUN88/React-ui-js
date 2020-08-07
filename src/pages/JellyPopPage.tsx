@@ -4,17 +4,16 @@ import JellyPop from '../components/JellyPop/JellyPop';
 
 const Cover = styled.div`
   position: fixed;
-  top: 300px;
+  top: 100px;
   left: 100px;
-  /* display: flex; */
-  /* flex-direction: row; */
+  display: flex;
   border: 1px solid black;
-  /* background-color: skyblue; */
 `;
 
 const Cover2 = styled.div`
-  width: 200px;
-  height: 50px;
+  position: fixed;
+  top: 400px;
+  left: 100px;
   border: 1px solid black;
 `;
 
@@ -23,10 +22,12 @@ const RelayBoardPage = () => {
     <>
       <Cover>
         <JellyPop direction={'right'} />
-        {/* <JellyPop /> */}
-        {/* <Cover2 /> */}
-        {/* <Cover2 /> */}
+        <JellyPop direction={'right'} />
       </Cover>
+      <Cover2>
+        <JellyPop />
+        <JellyPop />
+      </Cover2>
     </>
   );
 };

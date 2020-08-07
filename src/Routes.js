@@ -5,8 +5,7 @@ import SpeedDialPage from './pages/SpeedDialPage';
 import CardFanningPage from './pages/CardFanningPage';
 import QuickButtonPage from './pages/QuickButtonPage';
 import RelayBoardPage from './pages/RelayBoardPage';
-// import JellyPopPage from './pages/JellyPopPage';
-import JellyPopPage from './components/JellyPop/JellyPop';
+import JellyPopPage from './pages/JellyPopPage';
 
 class Routes extends Component {
   render() {
