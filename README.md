@@ -50,11 +50,11 @@ doc: https://github.com/PARKJONGSUN88/React-ui-js/tree/master/src/components/Rel
 ## Jelly Pop
 doc: https://github.com/PARKJONGSUN88/React-ui-js/tree/master/src/components/JellyPop
 
-**default** !작업중 - Coming soon
-<img width="1280" style="border:black 1px solid" alt="2" src="https://user-images.githubusercontent.com/50945715/89435959-8972a880-d780-11ea-8286-8d1afc04fa11.gif">
+**default**
+<img width="1280" style="border:black 1px solid" alt="2" src="https://user-images.githubusercontent.com/50945715/89714641-1618a300-d9db-11ea-9601-da3fb641cc04.gif">
 <br>
 **example**
-<img width="1280" style="border:black 1px solid" alt="2" src="https://user-images.githubusercontent.com/50945715/89435959-8972a880-d780-11ea-8286-8d1afc04fa11.gif">
+<img width="1280" style="border:black 1px solid" alt="2" src="https://user-images.githubusercontent.com/50945715/89714642-1749d000-d9db-11ea-8f0c-618f36a2b330.gif">
 <br>
 <br>
 
