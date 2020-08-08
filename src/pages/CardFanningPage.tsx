@@ -7,12 +7,6 @@ import insta from '../img/instagram.png';
 import twitter from '../img/twitter.png';
 import youtube from '../img/youtube.png';
 
-const Cover = styled.div`
-  position: fixed;
-  top: 100px;
-  left: 100px;
-`;
-
 const CardFanningPage = () => {
   return (
     <Cover>
@@ -30,3 +24,9 @@ const CardFanningPage = () => {
 };
 
 export default CardFanningPage;
+
+const Cover = styled.div`
+  position: fixed;
+  top: 100px;
+  left: 100px;
+`;

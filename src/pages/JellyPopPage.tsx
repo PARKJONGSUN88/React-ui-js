@@ -2,6 +2,23 @@ import React from 'react';
 import styled from 'styled-components';
 import JellyPop from '../components/JellyPop/JellyPop';
 
+const JellyPopPage = () => {
+  return (
+    <>
+      <Cover>
+        <JellyPop direction={'right'} itemsWidth={200} button={<Button />} />
+        <JellyPop direction={'right'} button={<Button />} items={<Items />} />
+      </Cover>
+      <Cover2>
+        <JellyPop itemsHeight={300} button={<Button />} />
+        <JellyPop button={<Button />} items={<Items />} />
+      </Cover2>
+    </>
+  );
+};
+
+export default JellyPopPage;
+
 const Cover = styled.div`
   position: fixed;
   top: 100px;
@@ -15,19 +32,31 @@ const Cover2 = styled.div`
   left: 100px;
 `;
 
-const JellyPopPage = () => {
+const Button = () => {
   return (
     <>
-      <Cover>
-        <JellyPop direction={'right'} itemsWidth={200} />
-        <JellyPop direction={'right'} />
-      </Cover>
-      <Cover2>
-        <JellyPop itemsHeight={300} />
-        <JellyPop />
-      </Cover2>
+      <div
+        style={{
+          backgroundColor: 'skyblue',
+          border: '1px solid black',
+          width: 100,
+          height: 100,
+        }}
+      />
     </>
   );
 };
 
-export default JellyPopPage;
+const Items = () => {
+  return (
+    <>
+      <div
+        style={{
+          backgroundColor: 'pink',
+          width: 100,
+          height: 100,
+        }}
+      />
+    </>
+  );
+};

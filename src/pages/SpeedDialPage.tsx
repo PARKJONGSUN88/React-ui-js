@@ -7,12 +7,6 @@ import insta from '../img/instagram.png';
 import twitter from '../img/twitter.png';
 import youtube from '../img/youtube.png';
 
-const Cover = styled.div`
-  position: fixed;
-  top: 300px;
-  left: 300px;
-`;
-
 const SpeedDialPage = () => {
   return (
     <Cover>
@@ -33,3 +27,9 @@ const SpeedDialPage = () => {
 };
 
 export default SpeedDialPage;
+
+const Cover = styled.div`
+  position: fixed;
+  top: 300px;
+  left: 300px;
+`;
