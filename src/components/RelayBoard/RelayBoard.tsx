@@ -94,24 +94,23 @@ const Contents = styled.div<ContentsType>`
   height: ${({ ViewHeight }) => ViewHeight}px;
   overflow: hidden;
   display: flex;
-  ${({ direction }) => {
-    if (direction === 'column')
-      return css`
-        align-items: flex-end;
-        justify-content: center;
-      `;
-    else
-      return css`
-        align-items: center;
-        justify-content: flex-end;
-      `;
-  }};
+  ${({ direction }) =>
+    direction === 'column'
+      ? css`
+          align-items: flex-end;
+          justify-content: center;
+        `
+      : css`
+          align-items: center;
+          justify-content: flex-end;
+        `};
 `;
 
 const Items = styled.div<ItemsType>`
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: ${({ direction }) => direction};
   ${({
     direction,
     width,
@@ -121,34 +120,30 @@ const Items = styled.div<ItemsType>`
     ViewHeight,
     speed,
     toggle,
-  }) => {
-    if (direction === 'column')
-      return css`
-        width: ${width}px;
-        height: ${height * count}px;
-        flex-direction: ${direction};
-        animation: ${onMove(
-            height * count - height * 0.25,
-            -ViewHeight + height * 0.25,
-            0,
-            0,
-          )}
-          ${speed}s ${toggle ? 'running' : 'paused'} linear infinite;
-      `;
-    else
-      return css`
-        width: ${width * count}px;
-        height: ${height}px;
-        flex-direction: ${direction};
-        animation: ${onMove(
-            0,
-            0,
-            width * count - width * 0.25,
-            -ViewWidht + width * 0.25,
-          )}
-          ${speed}s ${toggle ? 'running' : 'paused'} linear infinite;
-      `;
-  }};
+  }) =>
+    direction === 'column'
+      ? css`
+          width: ${width}px;
+          height: ${height * count}px;
+          animation: ${onMove(
+              height * count - height * 0.25,
+              -ViewHeight + height * 0.25,
+              0,
+              0,
+            )}
+            ${speed}s ${toggle ? 'running' : 'paused'} linear infinite;
+        `
+      : css`
+          width: ${width * count}px;
+          height: ${height}px;
+          animation: ${onMove(
+              0,
+              0,
+              width * count - width * 0.25,
+              -ViewWidht + width * 0.25,
+            )}
+            ${speed}s ${toggle ? 'running' : 'paused'} linear infinite;
+        `};
   & > div {
     width: ${({ width }) => width}px;
     height: ${({ height }) => height}px;
