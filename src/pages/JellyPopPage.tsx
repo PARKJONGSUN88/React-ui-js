@@ -7,29 +7,27 @@ const Cover = styled.div`
   top: 100px;
   left: 100px;
   display: flex;
-  border: 1px solid black;
 `;
 
 const Cover2 = styled.div`
   position: fixed;
-  top: 400px;
+  top: 300px;
   left: 100px;
-  border: 1px solid black;
 `;
 
-const RelayBoardPage = () => {
+const JellyPopPage = () => {
   return (
     <>
       <Cover>
-        <JellyPop direction={'right'} />
+        <JellyPop direction={'right'} itemsWidth={200} />
         <JellyPop direction={'right'} />
       </Cover>
       <Cover2>
-        <JellyPop />
+        <JellyPop itemsHeight={300} />
         <JellyPop />
       </Cover2>
     </>
   );
 };
 
-export default RelayBoardPage;
+export default JellyPopPage;
