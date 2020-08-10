@@ -62,3 +62,13 @@ doc: https://github.com/PARKJONGSUN88/React-ui-js/tree/master/src/components/Jel
 <br>
 <br>
 
+## Infinite Board
+doc: https://github.com/PARKJONGSUN88/React-ui-js/tree/master/src/components/InfiniteBoard
+
+**default**
+<img width="1280" style="border:black 1px solid" alt="2" src="https://user-images.githubusercontent.com/50945715/89810982-e8696080-db78-11ea-9e3b-b2c311e4c630.gif">
+<br>
+**example**
+<img width="1280" style="border:black 1px solid" alt="2" src="https://user-images.githubusercontent.com/50945715/89810999-edc6ab00-db78-11ea-9e8b-2d10a7d59786.gif">
+<br>
+<br>
