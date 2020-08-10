@@ -18,6 +18,9 @@ const IndexPage = ({ history }) => {
       <Content onClick={() => history.push('/RelayBoardPage')}>
         RelayBoardPage로 이동
       </Content>
+      <Content onClick={() => history.push('/InfiniteBoardPage')}>
+        InfiniteBoardPage로 이동
+      </Content>
       <Content onClick={() => history.push('/JellyPopPage')}>
         JellyPopPage로 이동
       </Content>

@@ -6,6 +6,7 @@ import CardFanningPage from './pages/CardFanningPage';
 import QuickButtonPage from './pages/QuickButtonPage';
 import RelayBoardPage from './pages/RelayBoardPage';
 import JellyPopPage from './pages/JellyPopPage';
+import InfiniteBoardPage from './pages/InfiniteBoardPage';
 
 class Routes extends Component {
   render() {
@@ -18,6 +19,11 @@ class Routes extends Component {
           <Route exact path="/QuickButtonPage" component={QuickButtonPage} />
           <Route exact path="/RelayBoardPage" component={RelayBoardPage} />
           <Route exact path="/JellyPopPage" component={JellyPopPage} />
+          <Route
+            exact
+            path="/InfiniteBoardPage"
+            component={InfiniteBoardPage}
+          />
         </Switch>
       </Router>
     );
