@@ -155,7 +155,9 @@ const Bridge = styled.div<BridgeType>`
   align-items: center;
   transform-origin: 0 50%;
   animation: ${({ isToggle, index, deg }) =>
-      isToggle ? onRotate(0, index * deg) : onRotate(index * deg, 0)}
+      isToggle
+        ? onAnimation(0, index * deg, 1, 1)
+        : onAnimation(index * deg, 0, 1, 1)}
     ${({ speed }) => speed}ms forwards;
 `;
 
@@ -163,8 +165,8 @@ const UnitWrap = styled.div<UnitWrapType>`
   margin-left: auto;
   animation: ${({ isToggle, fDeg, index, deg }) =>
       isToggle
-        ? onRotate(-fDeg, index * -deg - fDeg)
-        : onRotate(index * -deg - fDeg, -fDeg)}
+        ? onAnimation(-fDeg, index * -deg - fDeg, 1, 1)
+        : onAnimation(index * -deg - fDeg, -fDeg, 1, 1)}
     ${({ speed }) => speed}ms forwards;
 `;
 
@@ -174,25 +176,17 @@ const Unit = styled.div<UnitType>`
   display: flex;
   align-items: center;
   justify-content: center;
-  animation: ${({ isToggle }) => (isToggle ? onScale(0, 1) : onScale(1, 0))}
+  animation: ${({ isToggle }) =>
+      isToggle ? onAnimation(0, 0, 0, 1) : onAnimation(0, 0, 1, 0)}
     forwards;
   animation-delay: ${({ isToggle, speed }) => (isToggle ? 0 : speed)}ms;
 `;
 
-const onRotate = (e: number, i: number) => keyframes`
+const onAnimation = (e: number, i: number, y: number, z: number) => keyframes`
   0% {
-    transform: rotate(${e}deg);
+    transform: rotate(${e}deg) scale(${y});
   }
   100% {    
-    transform: rotate(${i}deg);
-  }
-`;
-
-const onScale = (e: number, i: number) => keyframes`
-  0% {
-    transform: scale(${e});   
-  }
-  100% {    
-    transform: scale(${i});   
+    transform: rotate(${i}deg) scale(${z});
   }
 `;

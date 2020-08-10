@@ -119,14 +119,14 @@ const Button = styled.div<ButtonType>`
   width: ${({ bWidth }) => bWidth}px;
   height: ${({ bHeight }) => bHeight}px;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
 `;
 
 const Units = styled.div<UnitsType>`
   position: absolute;
-  display: flex;
   height: 0px;
+  display: flex;
   ${({ direction, bHeight, bWidth }) => {
     if (direction === 'up')
       return css`
@@ -152,32 +152,30 @@ const Units = styled.div<UnitsType>`
 `;
 
 const UnitWrap = styled.div<UnitWrapType>`
+  width: ${({ direction, width, bWidth }) =>
+    direction === 'up' || direction === 'down' ? bWidth : width}px;
+  height: ${({ direction, height, bHeight }) =>
+    direction === 'up' || direction === 'down' ? height : bHeight}px;
   display: flex;
   align-items: center;
   justify-content: center;
-  ${({ direction, between, bWidth, height, width, bHeight }) => {
+  margin-top: ${({ direction, between }) => direction === 'down' && between}px;
+  margin-bottom: ${({ direction, between }) => direction === 'up' && between}px;
+  ${({ direction, between }) => {
     if (direction === 'up')
       return css`
-        width: ${bWidth}px;
-        height: ${height}px;
         margin-bottom: ${between}px;
       `;
     if (direction === 'down')
       return css`
-        width: ${bWidth}px;
-        height: ${height}px;
         margin-top: ${between}px;
       `;
     if (direction === 'left')
       return css`
-        width: ${width}px;
-        height: ${bHeight}px;
         margin-right: ${between}px;
       `;
     if (direction === 'right')
       return css`
-        width: ${width}px;
-        height: ${bHeight}px;
         margin-left: ${between}px;
       `;
   }};

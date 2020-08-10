@@ -10,7 +10,7 @@ const JellyPopPage = () => {
         <JellyPop direction={'right'} button={<Button />} items={<Items />} />
       </Cover>
       <Cover2>
-        <JellyPop itemsHeight={300} button={<Button />} />
+        <JellyPop itemsHeight={200} button={<Button />} />
         <JellyPop button={<Button />} items={<Items />} />
       </Cover2>
     </>
