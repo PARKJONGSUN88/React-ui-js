@@ -81,7 +81,7 @@ doc: https://github.com/PARKJONGSUN88/React-ui-js/tree/master/src/components/Inf
 doc: https://github.com/PARKJONGSUN88/React-ui-js/tree/master/src/components/Slider
 
 **default** !!!! 작업중입니다
-<img width="1280" style="border:black 1px solid" alt="2" src="https://user-images.githubusercontent.com/50945715/89930377-a0643f80-dc45-11ea-9093-d7d04340a38f.gif">
+<img width="1280" style="border:black 1px solid" alt="2" src="https://user-images.githubusercontent.com/50945715/89930728-284a4980-dc46-11ea-9920-3c46e9f15a80.gif">
 <br>
 
 
