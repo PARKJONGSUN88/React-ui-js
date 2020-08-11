@@ -75,3 +75,13 @@ doc: https://github.com/PARKJONGSUN88/React-ui-js/tree/master/src/components/Inf
 <img width="1280" style="border:black 1px solid" alt="2" src="https://user-images.githubusercontent.com/50945715/89893746-e43e5100-dc13-11ea-8242-09ee636da424.gif">
 <br>
 <br>
+
+
+## Slider
+doc: https://github.com/PARKJONGSUN88/React-ui-js/tree/master/src/components/Slider
+
+**default** !!!! 작업중입니다
+<img width="1280" style="border:black 1px solid" alt="2" src="https://user-images.githubusercontent.com/50945715/89930377-a0643f80-dc45-11ea-9093-d7d04340a38f.gif">
+<br>
+
+
