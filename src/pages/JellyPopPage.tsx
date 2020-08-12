@@ -1,13 +1,35 @@
 import React from 'react';
 import styled from 'styled-components';
 import JellyPop from '../components/JellyPop/JellyPop';
+import facebook from '../img/facebook.png';
+import insta from '../img/instagram.png';
+import twitter from '../img/twitter.png';
+import youtube from '../img/youtube.png';
 
 const JellyPopPage = () => {
   return (
     <>
       <Cover>
-        <JellyPop direction={'right'} itemsWidth={200} button={<Button />} />
-        <JellyPop direction={'right'} button={<Button />} items={<Items />} />
+        <JellyPop
+          direction={'right'}
+          button={<Button />}
+          items={<img src={facebook} alt="" width="100%" />}
+        />
+        <JellyPop
+          direction={'right'}
+          button={<Button />}
+          items={<img src={insta} alt="" width="100%" />}
+        />
+        <JellyPop
+          direction={'right'}
+          button={<Button />}
+          items={<img src={twitter} alt="" width="100%" />}
+        />
+        <JellyPop
+          direction={'right'}
+          button={<Button />}
+          items={<img src={youtube} alt="" width="100%" />}
+        />
       </Cover>
       <Cover2>
         <JellyPop itemsHeight={200} button={<Button />} />

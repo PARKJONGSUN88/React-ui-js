@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import SpeedDial from '../components/SpeedDial/SpeedDial';
-import mainMenu from '../img/quickmenu.png';
+import menu from '../img/reactcircle.png';
 import facebook from '../img/facebook.png';
 import insta from '../img/instagram.png';
 import twitter from '../img/twitter.png';
@@ -11,7 +11,7 @@ const SpeedDialPage = () => {
   return (
     <Cover>
       <SpeedDial
-        button={<img src={mainMenu} alt="" width="100%" />}
+        button={<img src={menu} alt="" width="100%" />}
         fDeg={0}
         deg={-45}
         between={100}

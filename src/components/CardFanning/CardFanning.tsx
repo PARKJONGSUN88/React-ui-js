@@ -36,6 +36,7 @@ interface BridgeType {
   index: number;
   deg: number;
   speed: number;
+  start: boolean;
 }
 
 interface UnitWrapType {
@@ -44,6 +45,7 @@ interface UnitWrapType {
   fDeg: number;
   isToggle: boolean;
   speed: number;
+  start: boolean;
 }
 
 interface UnitType {
@@ -52,6 +54,7 @@ interface UnitType {
   isToggle: boolean;
   index: number;
   speed: number;
+  start: boolean;
   length: number;
 }
 
@@ -65,32 +68,43 @@ const CardFanning: React.FC<CardFanningType> = ({
   ],
   width = 50,
   height = 50,
-  between = 150,
+  between = 100,
   fDeg = 90,
-  deg = -30,
+  deg = -45,
   speed = 1000,
   userFunc = (e: string | number | boolean | null | undefined) =>
     console.log(e),
 }) => {
   const [isToggle, setIsToggle] = useState(false);
+  const [start, setStart] = useState(false);
 
   return (
     <Contents>
       <Button
         bWidth={bWidth}
         bHeight={bHeight}
-        onClick={() => setIsToggle(!isToggle)}
+        onClick={() => {
+          setIsToggle(!isToggle);
+          setStart(true);
+        }}
       >
         {button}
       </Button>
       <Units between={between} height={height} fDeg={fDeg}>
         {dials.map((item, index) => (
-          <Bridge isToggle={isToggle} index={index} deg={deg} speed={speed}>
+          <Bridge
+            isToggle={isToggle}
+            index={index}
+            deg={deg}
+            speed={speed}
+            start={start}
+          >
             <UnitWrap
               isToggle={isToggle}
               index={index}
               deg={deg}
               speed={speed}
+              start={start}
               fDeg={fDeg}
             >
               <Unit
@@ -100,6 +114,7 @@ const CardFanning: React.FC<CardFanningType> = ({
                 width={width}
                 height={height}
                 speed={speed}
+                start={start}
                 onClick={() => {
                   userFunc(dials[index].url);
                   setIsToggle(false);
@@ -158,7 +173,7 @@ const Bridge = styled.div<BridgeType>`
       isToggle
         ? onAnimation(0, index * deg, 1, 1)
         : onAnimation(index * deg, 0, 1, 1)}
-    ${({ speed }) => speed}ms forwards;
+    ${({ speed, start }) => (start ? speed : 0)}ms forwards;
 `;
 
 const UnitWrap = styled.div<UnitWrapType>`
@@ -167,7 +182,7 @@ const UnitWrap = styled.div<UnitWrapType>`
       isToggle
         ? onAnimation(-fDeg, index * -deg - fDeg, 1, 1)
         : onAnimation(index * -deg - fDeg, -fDeg, 1, 1)}
-    ${({ speed }) => speed}ms forwards;
+    ${({ speed, start }) => (start ? speed : 0)}ms forwards;
 `;
 
 const Unit = styled.div<UnitType>`
@@ -179,7 +194,8 @@ const Unit = styled.div<UnitType>`
   animation: ${({ isToggle }) =>
       isToggle ? onAnimation(0, 0, 0, 1) : onAnimation(0, 0, 1, 0)}
     forwards;
-  animation-delay: ${({ isToggle, speed }) => (isToggle ? 0 : speed)}ms;
+  animation-delay: ${({ isToggle, speed, start }) =>
+    start ? (isToggle ? 0 : speed) : 0}ms;
 `;
 
 const onAnimation = (e: number, i: number, y: number, z: number) => keyframes`

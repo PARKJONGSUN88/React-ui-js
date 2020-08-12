@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import CardFanning from '../components/CardFanning/CardFanning';
-import mainMenu from '../img/quickmenu.png';
+import menu from '../img/reactcircle.png';
 import facebook from '../img/facebook.png';
 import insta from '../img/instagram.png';
 import twitter from '../img/twitter.png';
@@ -11,7 +11,7 @@ const CardFanningPage = () => {
   return (
     <Cover>
       <CardFanning
-        button={<img src={mainMenu} alt="" width="100%" />}
+        button={<img src={menu} alt="" width="100%" />}
         dials={[
           { url: '페이스북', icon: <img src={facebook} alt="" width="100%" /> },
           { url: '인스타', icon: <img src={insta} alt="" width="100%" /> },

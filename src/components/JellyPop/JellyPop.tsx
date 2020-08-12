@@ -21,6 +21,7 @@ interface ContentsType {
   itemsWidth: number;
   itemsHeight: number;
   speed: number;
+  start: boolean;
 }
 
 interface WrapType {
@@ -48,6 +49,7 @@ const JellyPop: React.FC<JellyPopType> = ({
   speed = 1000,
 }) => {
   const [toggle, setToggle] = useState(false);
+  const [start, setStart] = useState(false);
   return (
     <Contents
       toggle={toggle}
@@ -57,6 +59,7 @@ const JellyPop: React.FC<JellyPopType> = ({
       itemsWidth={itemsWidth}
       itemsHeight={itemsHeight}
       speed={speed}
+      start={start}
     >
       <Wrap
         width={width}
@@ -69,7 +72,10 @@ const JellyPop: React.FC<JellyPopType> = ({
           width={width}
           height={height}
           direction={direction}
-          onClick={() => setToggle(!toggle)}
+          onClick={() => {
+            setToggle(!toggle);
+            setStart(true);
+          }}
         >
           <div>{button}</div>
         </Button>
@@ -81,6 +87,7 @@ const JellyPop: React.FC<JellyPopType> = ({
           itemsWidth={itemsWidth}
           itemsHeight={itemsHeight}
           speed={speed}
+          start={start}
         >
           <div>{items}</div>
         </Items>
@@ -92,7 +99,16 @@ const JellyPop: React.FC<JellyPopType> = ({
 export default JellyPop;
 
 const Contents = styled.div<ContentsType>`
-  ${({ direction, toggle, width, height, itemsWidth, itemsHeight, speed }) =>
+  ${({
+    direction,
+    toggle,
+    width,
+    height,
+    itemsWidth,
+    itemsHeight,
+    speed,
+    start,
+  }) =>
     toggle
       ? direction === 'down'
         ? css`
@@ -104,7 +120,7 @@ const Contents = styled.div<ContentsType>`
                 height,
                 height + itemsHeight,
               )}
-              ${speed}ms cubic-bezier(0.75, 0, 0.25, 1.75) forwards;
+              ${start ? speed : 0}ms cubic-bezier(0.75, 0, 0.25, 1.75) forwards;
           `
         : css`
             animation: ${onMove(
@@ -113,7 +129,7 @@ const Contents = styled.div<ContentsType>`
                 height > itemsHeight ? height : itemsHeight,
                 height > itemsHeight ? height : itemsHeight,
               )}
-              ${speed}ms cubic-bezier(0.75, 0, 0.25, 1.75) forwards;
+              ${start ? speed : 0}ms cubic-bezier(0.75, 0, 0.25, 1.75) forwards;
           `
       : direction === 'down'
       ? css`
@@ -125,7 +141,7 @@ const Contents = styled.div<ContentsType>`
               height + itemsHeight,
               height,
             )}
-            ${speed}ms cubic-bezier(0.75, -0.75, 0.25, 1) forwards;
+            ${start ? speed : 0}ms cubic-bezier(0.75, -0.75, 0.25, 1) forwards;
         `
       : css`
           animation: ${onMove(
@@ -134,7 +150,7 @@ const Contents = styled.div<ContentsType>`
               height > itemsHeight ? height : itemsHeight,
               height > itemsHeight ? height : itemsHeight,
             )}
-            ${speed}ms cubic-bezier(0.75, -0.75, 0.25, 1) forwards;
+            ${start ? speed : 0}ms cubic-bezier(0.75, -0.75, 0.25, 1) forwards;
         `};
 `;
 
@@ -185,25 +201,25 @@ const Items = styled.div<ContentsType>`
   justify-content: center;
   flex-direction: ${({ direction }) =>
     direction === 'down' ? 'column' : 'row'};
-  ${({ direction, toggle, itemsWidth, itemsHeight, speed }) =>
+  ${({ direction, toggle, itemsWidth, itemsHeight, speed, start }) =>
     toggle
       ? direction === 'down'
         ? css`
             animation: ${onMove(itemsWidth, itemsWidth, 0, itemsHeight)}
-              ${speed}ms cubic-bezier(0.75, 0, 0.25, 1.75) forwards;
+              ${start ? speed : 0}ms cubic-bezier(0.75, 0, 0.25, 1.75) forwards;
           `
         : css`
             animation: ${onMove(itemsHeight, itemsHeight, 0, itemsWidth)}
-              ${speed}ms cubic-bezier(0.75, 0, 0.25, 1.75) forwards;
+              ${start ? speed : 0}ms cubic-bezier(0.75, 0, 0.25, 1.75) forwards;
           `
       : direction === 'down'
       ? css`
           animation: ${onMove(itemsWidth, itemsWidth, itemsHeight, 0)}
-            ${speed}ms cubic-bezier(0.75, -0.75, 0.25, 1) forwards;
+            ${start ? speed : 0}ms cubic-bezier(0.75, -0.75, 0.25, 1) forwards;
         `
       : css`
           animation: ${onMove(itemsHeight, itemsHeight, itemsWidth, 0)}
-            ${speed}ms cubic-bezier(0.75, -0.75, 0.25, 1) forwards;
+            ${start ? speed : 0}ms cubic-bezier(0.75, -0.75, 0.25, 1) forwards;
         `};
   & > div {
     overflow: hidden;

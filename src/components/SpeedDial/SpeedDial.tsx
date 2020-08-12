@@ -48,6 +48,7 @@ interface UnitType {
   isToggle: boolean;
   index: number;
   speed: number;
+  start: boolean;
   length: number;
 }
 
@@ -69,13 +70,17 @@ const SpeedDial: React.FC<SpeedDialType> = ({
     console.log(e),
 }) => {
   const [isToggle, setIsToggle] = useState(false);
+  const [start, setStart] = useState(false);
 
   return (
     <Contents>
       <Button
         bWidth={bWidth}
         bHeight={bHeight}
-        onClick={() => setIsToggle(!isToggle)}
+        onClick={() => {
+          setIsToggle(!isToggle);
+          setStart(true);
+        }}
       >
         {button}
       </Button>
@@ -90,6 +95,7 @@ const SpeedDial: React.FC<SpeedDialType> = ({
                 width={width}
                 height={height}
                 speed={speed}
+                start={start}
                 onClick={() => {
                   userFunc(dials[index].url);
                   setIsToggle(false);
@@ -159,8 +165,8 @@ const Unit = styled.div<UnitType>`
   align-items: center;
   justify-content: center;
   animation: ${({ isToggle }) => (isToggle ? onScale(0, 1) : onScale(1, 0))}
-    ${({ isToggle, index, speed, length }) =>
-      isToggle ? (index + 1) * speed : (length - index) * speed}ms
+    ${({ isToggle, index, speed, length, start }) =>
+      start ? (isToggle ? (index + 1) * speed : (length - index) * speed) : 0}ms
     forwards;
 `;
 

@@ -42,6 +42,7 @@ interface UnitWrapType {
   length: number;
   between: number;
   speed: number;
+  start: boolean;
 }
 
 interface UnitType {
@@ -66,13 +67,17 @@ const QuickButton: React.FC<QuickButtonType> = ({
     console.log(e),
 }) => {
   const [isToggle, setIsToggle] = useState(false);
+  const [start, setStart] = useState(false);
 
   return (
     <Contents>
       <Button
         bWidth={bWidth}
         bHeight={bHeight}
-        onClick={() => setIsToggle(!isToggle)}
+        onClick={() => {
+          setIsToggle(!isToggle);
+          setStart(true);
+        }}
       >
         {button}
       </Button>
@@ -90,6 +95,7 @@ const QuickButton: React.FC<QuickButtonType> = ({
             length={dials.length}
             between={between}
             speed={speed}
+            start={start}
           >
             <Unit
               width={width}
@@ -180,8 +186,8 @@ const UnitWrap = styled.div<UnitWrapType>`
       `;
   }};
   animation: ${({ isToggle }) => (isToggle ? onScale(0, 1) : onScale(1, 0))}
-    ${({ isToggle, index, speed, length }) =>
-      isToggle ? (index + 1) * speed : (length - index) * speed}ms
+    ${({ isToggle, index, speed, length, start }) =>
+      start ? (isToggle ? (index + 1) * speed : (length - index) * speed) : 0}ms
     forwards;
 `;
 

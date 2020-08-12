@@ -7,6 +7,7 @@ import QuickButtonPage from './pages/QuickButtonPage';
 import RelayBoardPage from './pages/RelayBoardPage';
 import JellyPopPage from './pages/JellyPopPage';
 import InfiniteBoardPage from './pages/InfiniteBoardPage';
+import SliderPage from './pages/SliderPage';
 
 class Routes extends Component {
   render() {
@@ -24,6 +25,7 @@ class Routes extends Component {
             path="/InfiniteBoardPage"
             component={InfiniteBoardPage}
           />
+          <Route exact path="/SliderPage" component={SliderPage} />
         </Switch>
       </Router>
     );

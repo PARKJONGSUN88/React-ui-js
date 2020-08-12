@@ -5,7 +5,7 @@ import styled, { keyframes, css } from 'styled-components';
 interface InfiniteBoardType {
   ViewWidth?: number;
   ViewHeight?: number;
-  direction?: 'row' | 'column';
+  direction?: 'left' | 'right' | 'up' | 'down';
   items?: Array<ArrayType>;
   width?: number;
   height?: number;
@@ -26,7 +26,7 @@ interface ContentsType {
 interface ItemsType {
   ViewWidth: number;
   ViewHeight: number;
-  direction: 'row' | 'column';
+  direction: 'left' | 'right' | 'up' | 'down';
   width: number;
   height: number;
   speed: number;
@@ -36,19 +36,16 @@ interface ItemsType {
 }
 
 const InfiniteBoard: React.FC<InfiniteBoardType> = ({
-  ViewWidth = 300,
-  ViewHeight = 300,
-  direction = 'row',
+  ViewWidth = 200,
+  ViewHeight = 200,
+  direction = 'left',
   items = [
     { item: '1번째 사진입니다.', url: '1번 사진으로 이동' },
     { item: '2번째 사진입니다.', url: '2번 사진으로 이동' },
     { item: '3번째 사진입니다.', url: '3번 사진으로 이동' },
-    { item: '4번째 사진입니다.', url: '4번 사진으로 이동' },
-    { item: '5번째 사진입니다.', url: '5번 사진으로 이동' },
-    { item: '6번째 사진입니다.', url: '6번 사진으로 이동' },
   ],
-  width = 200,
-  height = 200,
+  width = 100,
+  height = 100,
   speed = 10,
   userFunc = (e: string | number | boolean | null | undefined) =>
     console.log(e),
@@ -56,9 +53,12 @@ const InfiniteBoard: React.FC<InfiniteBoardType> = ({
   const [toggle, setToggle] = useState(true);
 
   return (
-    <Contents ViewWidth={ViewWidth} ViewHeight={ViewHeight}>
+    <Contents
+      ViewWidth={ViewWidth}
+      ViewHeight={ViewHeight}
+      onClick={() => setToggle(!toggle)}
+    >
       <Items
-        onClick={() => setToggle(!toggle)}
         ViewWidth={ViewWidth}
         ViewHeight={ViewHeight}
         direction={direction}
@@ -75,7 +75,6 @@ const InfiniteBoard: React.FC<InfiniteBoardType> = ({
         ))}
       </Items>
       <Items
-        onClick={() => setToggle(!toggle)}
         ViewWidth={ViewWidth}
         ViewHeight={ViewHeight}
         direction={direction}
@@ -110,71 +109,131 @@ const Contents = styled.div<ContentsType>`
 
 const Items = styled.div<ItemsType>`
   position: absolute;
+  top: ${({ direction }) => direction === 'up' && 0}px;
+  bottom: ${({ direction }) => direction === 'down' && 0}px;
+  left: ${({ direction }) => direction === 'left' && 0}px;
+  right: ${({ direction }) => direction === 'right' && 0}px;
+  width: ${({ direction, width, count, ViewWidth }) =>
+    direction === 'left' || direction === 'right'
+      ? width * count >= ViewWidth
+        ? width * count
+        : ViewWidth
+      : width}px;
+  height: ${({ direction, height, count, ViewHeight }) =>
+    direction === 'up' || direction === 'down'
+      ? height * count >= ViewHeight
+        ? height * count
+        : ViewHeight
+      : height}px;
   display: flex;
   align-items: center;
-  justify-content: center;
-  flex-direction: ${({ direction }) => direction};
-  ${({
-    direction,
-    width,
-    height,
-    count,
-    ViewWidth,
-    ViewHeight,
-    speed,
-    toggle,
-  }) =>
-    direction === 'column'
-      ? css`
-          top: 0px;
-          width: ${width}px;
-          height: ${height * count}px;
-          animation: ${onMove(
+  justify-content: space-around;
+  flex-direction: ${({ direction }) => {
+    if (direction === 'up') return 'column';
+    if (direction === 'down') return 'column-reverse';
+    if (direction === 'left') return 'row';
+    if (direction === 'right') return 'row-reverse';
+  }};
+  animation: ${({ toggle }) => (toggle ? 'running' : 'paused')} linear infinite
+    ${({ speed }) => speed}s
+    ${({ direction, width, height, count, ViewWidth, ViewHeight }) => {
+      if (direction === 'up') {
+        if (height * count >= ViewHeight)
+          return css`
+            ${onMove(
+              0,
+              0,
               ViewHeight,
               -(height * count + (height * count - ViewHeight)),
+            )};
+          `;
+        else
+          return css`
+            ${onMove(0, 0, ViewHeight, -ViewHeight)};
+          `;
+      }
+      if (direction === 'down') {
+        if (height * count >= ViewHeight)
+          return css`
+            ${onMove(
               0,
               0,
-            )}
-            ${speed}s ${toggle ? 'running' : 'paused'} linear infinite;
-        `
-      : css`
-          left: 0px;
-          width: ${width * count}px;
-          height: ${height}px;
-          animation: ${onMove(
-              0,
-              0,
+              -ViewHeight,
+              height * count + (height * count - ViewHeight),
+            )};
+          `;
+        else
+          return css`
+            ${onMove(0, 0, -ViewHeight, ViewHeight)};
+          `;
+      }
+      if (direction === 'left') {
+        if (width * count >= ViewWidth)
+          return css`
+            ${onMove(
               ViewWidth,
               -(width * count + (width * count - ViewWidth)),
-            )}
-            ${speed}s ${toggle ? 'running' : 'paused'} linear infinite;
-        `};
-  ${({ direction, second, ViewWidth, ViewHeight }) =>
-    second && direction === 'column'
-      ? css`
-          transform: translateY(${ViewHeight}px);
-        `
-      : css`
-          transform: translateX(${ViewWidth}px);
-        `};
-  z-index: ${({ second }) => (second ? 2 : 1)};
+              0,
+              0,
+            )};
+          `;
+        else
+          return css`
+            ${onMove(ViewWidth, -ViewWidth, 0, 0)};
+          `;
+      }
+      if (direction === 'right') {
+        if (width * count >= ViewWidth)
+          return css`
+            ${onMove(
+              -ViewWidth,
+              width * count + (width * count - ViewWidth),
+              0,
+              0,
+            )};
+          `;
+        else
+          return css`
+            ${onMove(-ViewWidth, ViewWidth, 0, 0)};
+          `;
+      }
+    }};
   animation-delay: ${({ second, speed }) => second && speed / 2}s;
-  /* background-color: ${({ second }) => (second ? 'pink' : 'skyblue')}; */
+  z-index: ${({ second }) => (second ? 1 : 2)};
+  ${({ direction, second, ViewWidth, ViewHeight }) => {
+    if (second) {
+      if (direction === 'up')
+        return css`
+          transform: translateY(${ViewHeight}px);
+        `;
+      if (direction === 'down')
+        return css`
+          transform: translateY(${-ViewHeight}px);
+        `;
+      if (direction === 'left')
+        return css`
+          transform: translateX(${ViewWidth}px);
+        `;
+      if (direction === 'right')
+        return css`
+          transform: translateX(${-ViewWidth}px);
+        `;
+    }
+  }};
   & > div {
     width: ${({ width }) => width}px;
     height: ${({ height }) => height}px;
     display: flex;
     align-items: center;
     justify-content: center;
-    /* border: 1px solid black; */
   }
 `;
 
 const onMove = (e: number, i: number, y: number, z: number) => keyframes` 
   0% {
-    transform: translate(${y}px, ${e}px);
+    transform: translate(${e}px, ${y}px);
   }
   100% {
-    transform: translate(${z}px, ${i}px);
+    transform: translate(${i}px, ${z}px);
   }
 `;
