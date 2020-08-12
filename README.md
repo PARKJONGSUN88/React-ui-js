@@ -66,13 +66,13 @@ doc: https://github.com/PARKJONGSUN88/React-ui-js/tree/master/src/components/Jel
 doc: https://github.com/PARKJONGSUN88/React-ui-js/tree/master/src/components/InfiniteBoard
 
 **default**
-<img width="1280" style="border:black 1px solid" alt="2" src="https://user-images.githubusercontent.com/50945715/89810982-e8696080-db78-11ea-9e3b-b2c311e4c630.gif">
+<img width="1280" height="400" style="border:black 1px solid" alt="2" src="https://user-images.githubusercontent.com/50945715/89810982-e8696080-db78-11ea-9e3b-b2c311e4c630.gif">
 <br>
 **example**
-<img width="1280" style="border:black 1px solid" alt="2" src="https://user-images.githubusercontent.com/50945715/89810999-edc6ab00-db78-11ea-9e8b-2d10a7d59786.gif">
+<img width="1280" height="400" style="border:black 1px solid" alt="2" src="https://user-images.githubusercontent.com/50945715/89810999-edc6ab00-db78-11ea-9e8b-2d10a7d59786.gif">
 <br>
 **이런식~~빠징코~~으로도 활용 가능함**
-<img width="1280" style="border:black 1px solid" alt="2" src="https://user-images.githubusercontent.com/50945715/89893746-e43e5100-dc13-11ea-8242-09ee636da424.gif">
+<img width="1280" height="400" style="border:black 1px solid" alt="2" src="https://user-images.githubusercontent.com/50945715/89893746-e43e5100-dc13-11ea-8242-09ee636da424.gif">
 <br>
 <br>
 
@@ -81,12 +81,12 @@ doc: https://github.com/PARKJONGSUN88/React-ui-js/tree/master/src/components/Inf
 doc: https://github.com/PARKJONGSUN88/React-ui-js/tree/master/src/components/Slider
 
 **default** !!!! 작업중입니다
-<img width="1280" style="border:black 1px solid" alt="2" src="https://user-images.githubusercontent.com/50945715/89930728-284a4980-dc46-11ea-9920-3c46e9f15a80.gif">
+<img width="1280" height="400" style="border:black 1px solid" alt="2" src="https://user-images.githubusercontent.com/50945715/89930728-284a4980-dc46-11ea-9920-3c46e9f15a80.gif">
 <br>
 
 ## SliderThree
 doc: https://github.com/PARKJONGSUN88/React-ui-js/tree/master/src/components/SliderThree
 
 **default** !!!! 작업중입니다
-<img width="1280" style="border:black 1px solid" alt="2" src="https://user-images.githubusercontent.com/50945715/90018971-ba0a9300-dce8-11ea-8d80-12931158c4c6.gif">
+<img width="1280" height="400" style="border:black 1px solid" alt="2" src="https://user-images.githubusercontent.com/50945715/90018971-ba0a9300-dce8-11ea-8d80-12931158c4c6.gif">
 <br>
