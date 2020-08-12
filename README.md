@@ -11,9 +11,11 @@
 doc: https://github.com/PARKJONGSUN88/React-ui-js/tree/master/src/components/CardFanning
 
 **default**
+<br>
 <img width="640" style="border:black 1px solid" alt="2" src="https://user-images.githubusercontent.com/50945715/88458396-c4dfbe00-cec8-11ea-9577-3c83656ec05c.gif">
 <br>
 **example**
+<br>
 <img width="640" style="border:black 1px solid"  alt="gif2" src="https://user-images.githubusercontent.com/50945715/88453550-03fb1880-cea3-11ea-9693-1bc5114cf4ed.gif">
 <br>
 <br>
@@ -22,9 +24,11 @@ doc: https://github.com/PARKJONGSUN88/React-ui-js/tree/master/src/components/Car
 doc: https://github.com/PARKJONGSUN88/React-ui-js/tree/master/src/components/SpeedDial
 
 **default**
+<br>
 <img width="640" style="border:black 1px solid"  alt="gif2" src="https://user-images.githubusercontent.com/50945715/88458397-c610eb00-cec8-11ea-8c8c-2ea00853900f.gif">
 <br>
 **example**
+<br>
 <img width="640" style="border:black 1px solid"  alt="gif2" src="https://user-images.githubusercontent.com/50945715/88410902-fc3f6380-ce11-11ea-9727-b9d922cad25a.gif">
 <br>
 <br>
@@ -33,9 +37,11 @@ doc: https://github.com/PARKJONGSUN88/React-ui-js/tree/master/src/components/Spe
 doc: https://github.com/PARKJONGSUN88/React-ui-js/tree/master/src/components/QuickButton
 
 **default**
+<br>
 <img width="640" style="border:black 1px solid" alt="2" src="https://user-images.githubusercontent.com/50945715/88458290-edb38380-cec7-11ea-8b9f-a7bc48c4b0a3.gif">
 <br>
 **example**
+<br>
 <img width="640" style="border:black 1px solid"  alt="gif2" src="https://user-images.githubusercontent.com/50945715/88458291-eee4b080-cec7-11ea-96f7-5a59fb442663.gif">
 <br>
 <br>
@@ -44,9 +50,11 @@ doc: https://github.com/PARKJONGSUN88/React-ui-js/tree/master/src/components/Qui
 doc: https://github.com/PARKJONGSUN88/React-ui-js/tree/master/src/components/RelayBoard
 
 **default**
+<br>
 <img width="640" style="border:black 1px solid" alt="2" src="https://user-images.githubusercontent.com/50945715/89317140-f110f100-d6b7-11ea-8b6b-8c9e74ee81ed.gif">
 <br>
 **example**
+<br>
 <img width="640" style="border:black 1px solid"  alt="gif2" src="https://user-images.githubusercontent.com/50945715/89317143-f2421e00-d6b7-11ea-94d7-cac22333e1e0.gif">
 <br>
 <br>
@@ -55,9 +63,11 @@ doc: https://github.com/PARKJONGSUN88/React-ui-js/tree/master/src/components/Rel
 doc: https://github.com/PARKJONGSUN88/React-ui-js/tree/master/src/components/JellyPop
 
 **default**
+<br>
 <img width="640" style="border:black 1px solid" alt="2" src="https://user-images.githubusercontent.com/50945715/89714641-1618a300-d9db-11ea-9601-da3fb641cc04.gif">
 <br>
 **example**
+<br>
 <img width="640" style="border:black 1px solid" alt="2" src="https://user-images.githubusercontent.com/50945715/89714642-1749d000-d9db-11ea-8f0c-618f36a2b330.gif">
 <br>
 <br>
@@ -66,12 +76,15 @@ doc: https://github.com/PARKJONGSUN88/React-ui-js/tree/master/src/components/Jel
 doc: https://github.com/PARKJONGSUN88/React-ui-js/tree/master/src/components/InfiniteBoard
 
 **default**
+<br>
 <img width="640" style="border:black 1px solid" alt="2" src="https://user-images.githubusercontent.com/50945715/89810982-e8696080-db78-11ea-9e3b-b2c311e4c630.gif">
 <br>
 **example**
+<br>
 <img width="640" style="border:black 1px solid" alt="2" src="https://user-images.githubusercontent.com/50945715/89810999-edc6ab00-db78-11ea-9e8b-2d10a7d59786.gif">
 <br>
 **이런식~~빠징코~~으로도 활용 가능함**
+<br>
 <img width="640" style="border:black 1px solid" alt="2" src="https://user-images.githubusercontent.com/50945715/89893746-e43e5100-dc13-11ea-8242-09ee636da424.gif">
 <br>
 <br>
@@ -80,13 +93,15 @@ doc: https://github.com/PARKJONGSUN88/React-ui-js/tree/master/src/components/Inf
 ## Slider
 doc: https://github.com/PARKJONGSUN88/React-ui-js/tree/master/src/components/Slider
 
-**default** !!!! 작업중입니다
+**default** !!!! 작업중입니다.
+<br>
 <img width="640" style="border:black 1px solid" alt="2" src="https://user-images.githubusercontent.com/50945715/89930728-284a4980-dc46-11ea-9920-3c46e9f15a80.gif">
 <br>
 
 ## SliderThree
 doc: https://github.com/PARKJONGSUN88/React-ui-js/tree/master/src/components/SliderThree
 
-**default** !!!! 작업중입니다
+**default** !!!! 작업중입니다.
+<br>
 <img width="640" style="border:black 1px solid" alt="2" src="https://user-images.githubusercontent.com/50945715/90018971-ba0a9300-dce8-11ea-8d80-12931158c4c6.gif">
 <br>
