@@ -88,5 +88,5 @@ doc: https://github.com/PARKJONGSUN88/React-ui-js/tree/master/src/components/Sli
 doc: https://github.com/PARKJONGSUN88/React-ui-js/tree/master/src/components/SliderThree
 
 **default** !!!! 작업중입니다
-<img width="1280" style="border:black 1px solid" alt="2" src="https://user-images.githubusercontent.com/50945715/90018640-351f7980-dce8-11ea-8eed-2c65f49486ce.gif">
+<img width="1280" style="border:black 1px solid" alt="2" src="https://user-images.githubusercontent.com/50945715/90018971-ba0a9300-dce8-11ea-8d80-12931158c4c6.gif">
 <br>
