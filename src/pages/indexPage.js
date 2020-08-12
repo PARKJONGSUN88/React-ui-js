@@ -27,6 +27,9 @@ const IndexPage = ({ history }) => {
       <Content onClick={() => history.push('/SliderPage')}>
         SliderPage로 이동
       </Content>
+      <Content onClick={() => history.push('/SliderThreePage')}>
+        SliderThreePage로 이동
+      </Content>
     </>
   );
 };

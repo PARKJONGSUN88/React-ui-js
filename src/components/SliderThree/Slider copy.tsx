@@ -31,34 +31,31 @@ interface ItemsType {
   height: number;
   speed: number;
   count: number;
-  toggle: boolean;
-  second?: boolean;
   state: number;
   index: number;
   length: number;
+  start: boolean;
+  second?: boolean;
   plus?: boolean;
 }
 
 const Slider: React.FC<InfiniteBoardType> = ({
-  ViewWidth = 500,
+  ViewWidth = 400,
   ViewHeight = 500,
   direction = 'left',
   items = [
-    { item: '1번째 사진입니다.', url: '1번 사진으로 이동' },
+    { item: '1번째 사진입니.', url: '1번 사진으로 이동' },
     { item: '2번째 사진입니다.', url: '2번 사진으로 이동' },
     { item: '3번째 사진입니다.', url: '3번 사진으로 이동' },
-    { item: '4번째 사진입니다.', url: '4번 사진으로 이동' },
-    { item: '5번째 사진입니다.', url: '5번 사진으로 이동' },
-    { item: '6번째 사진입니다.', url: '6번 사진으로 이동' },
   ],
-  width = 500,
-  height = 500,
+  width = 400,
+  height = 400,
   speed = 500,
   userFunc = (e: string | number | boolean | null | undefined) =>
     console.log(e),
 }) => {
-  const [toggle, setToggle] = useState(false);
   const [state, setNum] = useState(items.length);
+  const [start, setStart] = useState(false);
   const [plus, setPlus] = useState(true);
 
   return (
@@ -67,7 +64,7 @@ const Slider: React.FC<InfiniteBoardType> = ({
       <div
         onClick={() => {
           setNum(state < items.length ? state + 1 : 1);
-          setToggle(true);
+          setStart(true);
           setPlus(true);
         }}
       >
@@ -75,11 +72,9 @@ const Slider: React.FC<InfiniteBoardType> = ({
       </div>
       <div
         onClick={() => {
-          {
-            setNum(state > 1 ? state - 1 : items.length);
-            setToggle(true);
-            setPlus(false);
-          }
+          setNum(state > 1 ? state - 1 : items.length);
+          setStart(true);
+          setPlus(false);
         }}
       >
         뒤로가기
@@ -90,11 +85,11 @@ const Slider: React.FC<InfiniteBoardType> = ({
             ViewWidth={ViewWidth}
             ViewHeight={ViewHeight}
             direction={direction}
-            speed={speed}
             width={width}
             height={height}
+            speed={speed}
+            start={start}
             count={items.length}
-            toggle={toggle}
             state={state}
             index={index + 1}
             length={items.length}
@@ -113,53 +108,45 @@ const Slider: React.FC<InfiniteBoardType> = ({
 export default Slider;
 
 const Contents = styled.div<ContentsType>`
-  position: relative;
   width: ${({ ViewWidth }) => ViewWidth}px;
   height: ${({ ViewHeight }) => ViewHeight}px;
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
+  /* overflow: hidden; */
   border: 1px solid pink;
 `;
 
 const Items = styled.div<ItemsType>`
+  width: ${({ ViewWidth }) => ViewWidth}px;
+  height: ${({ ViewHeight }) => ViewHeight}px;
   position: absolute;
   top: ${({ direction }) => direction === 'up' && 0}px;
   bottom: ${({ direction }) => direction === 'down' && 0}px;
   left: ${({ direction }) => direction === 'left' && 0}px;
   right: ${({ direction }) => direction === 'right' && 0}px;
-  width: 500px;
-  height: ${({ direction, height, count, ViewHeight }) =>
-    direction === 'up' || direction === 'down'
-      ? height * count >= ViewHeight
-        ? height * count
-        : ViewHeight
-      : height}px;
   display: flex;
   align-items: center;
   justify-content: space-around;
-  /* background: white; */
   flex-direction: ${({ direction }) => {
     if (direction === 'up') return 'column';
     if (direction === 'down') return 'column-reverse';
     if (direction === 'left') return 'row';
     if (direction === 'right') return 'row-reverse';
   }};
-  ${({ state, index, toggle, speed, length, plus }) => {
+  ${({ state, index, start, speed, length, plus, ViewWidth }) => {
     if (plus) {
       if (index === state) {
         return css`
-          animation: ${onMove(0, -500, 0, 0)} linear forwards
-            ${toggle ? speed : 0}ms;
-          /* z-index: 2; */
+          animation: ${onMove(0, -ViewWidth, 0, 0)} linear forwards
+            ${start ? speed : 0}ms;
         `;
       }
       if ((index === 1 && state === length) || index === state + 1) {
         return css`
-          animation: ${onMove(500, 0, 0, 0)} ${toggle ? speed : 0}ms linear
+          animation: ${onMove(ViewWidth, 0, 0, 0)} ${start ? speed : 0}ms linear
             forwards;
-          /* z-index: 2; */
         `;
       } else {
         return css`
@@ -169,9 +156,8 @@ const Items = styled.div<ItemsType>`
     } else {
       if (index === state + 1 || (index === 1 && state === length)) {
         return css`
-          animation: ${onMove(-500, 0, 0, 0)} linear forwards
-            ${toggle ? speed : 0}ms;
-          /* z-index: 2; */
+          animation: ${onMove(-ViewWidth, 0, 0, 0)} linear forwards
+            ${start ? speed : 0}ms;
         `;
       }
       if (
@@ -180,9 +166,8 @@ const Items = styled.div<ItemsType>`
         (index === 1 && state === length - 1)
       ) {
         return css`
-          animation: ${onMove(0, 500, 0, 0)} ${toggle ? speed : 0}ms linear
+          animation: ${onMove(0, ViewWidth, 0, 0)} ${start ? speed : 0}ms linear
             forwards;
-          /* z-index: 2; */
         `;
       } else {
         return css`
@@ -192,11 +177,13 @@ const Items = styled.div<ItemsType>`
     }
   }};
   & > div {
+    padding: 10px;
     width: ${({ width }) => width}px;
     height: ${({ height }) => height}px;
     display: flex;
     align-items: center;
     justify-content: center;
+    animation: ${({ start }) => start && onRotate()} 1s;
   }
 `;
 
@@ -206,5 +193,14 @@ const onMove = (e: number, i: number, y: number, z: number) => keyframes`
   }
   100% {
     transform: translate(${i}px, ${z}px);
+  }
+`;
+
+const onRotate = () => keyframes` 
+  0% {
+    transform: perspective(800px) rotateY(0deg) ;
+  }
+  100% {
+    transform: perspective(800px) rotateY(25deg) ;
   }
 `;
