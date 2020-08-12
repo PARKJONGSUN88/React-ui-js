@@ -84,4 +84,9 @@ doc: https://github.com/PARKJONGSUN88/React-ui-js/tree/master/src/components/Sli
 <img width="1280" style="border:black 1px solid" alt="2" src="https://user-images.githubusercontent.com/50945715/89930728-284a4980-dc46-11ea-9920-3c46e9f15a80.gif">
 <br>
 
+## SliderThree
+doc: https://github.com/PARKJONGSUN88/React-ui-js/tree/master/src/components/SliderThree
 
+**default** !!!! 작업중입니다
+<img width="1280" style="border:black 1px solid" alt="2" src="https://user-images.githubusercontent.com/50945715/90018640-351f7980-dce8-11ea-8eed-2c65f49486ce.gif">
+<br>
