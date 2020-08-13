@@ -40,8 +40,8 @@ interface ItemsType {
 }
 
 const Slider: React.FC<InfiniteBoardType> = ({
-  ViewWidth = 500,
-  ViewHeight = 500,
+  ViewWidth = 300,
+  ViewHeight = 300,
   direction = 'left',
   items = [
     { item: '1번째 사진입니다.', url: '1번 사진으로 이동' },
@@ -51,8 +51,8 @@ const Slider: React.FC<InfiniteBoardType> = ({
     { item: '5번째 사진입니다.', url: '5번 사진으로 이동' },
     { item: '6번째 사진입니다.', url: '6번 사진으로 이동' },
   ],
-  width = 500,
-  height = 500,
+  width = 300,
+  height = 300,
   speed = 500,
   userFunc = (e: string | number | boolean | null | undefined) =>
     console.log(e),
@@ -62,28 +62,18 @@ const Slider: React.FC<InfiniteBoardType> = ({
   const [plus, setPlus] = useState(true);
 
   return (
-    <>
-      {state !== items.length ? state + 1 : 1} {plus}
+    <Cover>
       <div
+        className="leftButton"
         onClick={() => {
           setNum(state < items.length ? state + 1 : 1);
           setToggle(true);
           setPlus(true);
         }}
       >
-        앞으로가기
+        left
       </div>
-      <div
-        onClick={() => {
-          {
-            setNum(state > 1 ? state - 1 : items.length);
-            setToggle(true);
-            setPlus(false);
-          }
-        }}
-      >
-        뒤로가기
-      </div>
+
       <Contents ViewWidth={ViewWidth} ViewHeight={ViewHeight}>
         {items.map((item, index) => (
           <Items
@@ -106,11 +96,32 @@ const Slider: React.FC<InfiniteBoardType> = ({
           </Items>
         ))}
       </Contents>
-    </>
+      <div
+        className="rightButton"
+        onClick={() => {
+          setNum(state > 1 ? state - 1 : items.length);
+          setToggle(true);
+          setPlus(false);
+        }}
+      >
+        rigth
+      </div>
+    </Cover>
   );
 };
 
 export default Slider;
+
+const Cover = styled.div`
+  display: flex;
+  .leftButton,
+  .rightButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+  }
+`;
 
 const Contents = styled.div<ContentsType>`
   position: relative;
@@ -129,7 +140,7 @@ const Items = styled.div<ItemsType>`
   bottom: ${({ direction }) => direction === 'down' && 0}px;
   left: ${({ direction }) => direction === 'left' && 0}px;
   right: ${({ direction }) => direction === 'right' && 0}px;
-  width: 500px;
+  width: 300px;
   height: ${({ direction, height, count, ViewHeight }) =>
     direction === 'up' || direction === 'down'
       ? height * count >= ViewHeight
@@ -150,14 +161,14 @@ const Items = styled.div<ItemsType>`
     if (plus) {
       if (index === state) {
         return css`
-          animation: ${onMove(0, -500, 0, 0)} linear forwards
+          animation: ${onMove(0, -300, 0, 0)} linear forwards
             ${toggle ? speed : 0}ms;
           /* z-index: 2; */
         `;
       }
       if ((index === 1 && state === length) || index === state + 1) {
         return css`
-          animation: ${onMove(500, 0, 0, 0)} ${toggle ? speed : 0}ms linear
+          animation: ${onMove(300, 0, 0, 0)} ${toggle ? speed : 0}ms linear
             forwards;
           /* z-index: 2; */
         `;
@@ -169,7 +180,7 @@ const Items = styled.div<ItemsType>`
     } else {
       if (index === state + 1 || (index === 1 && state === length)) {
         return css`
-          animation: ${onMove(-500, 0, 0, 0)} linear forwards
+          animation: ${onMove(-300, 0, 0, 0)} linear forwards
             ${toggle ? speed : 0}ms;
           /* z-index: 2; */
         `;
@@ -180,7 +191,7 @@ const Items = styled.div<ItemsType>`
         (index === 1 && state === length - 1)
       ) {
         return css`
-          animation: ${onMove(0, 500, 0, 0)} ${toggle ? speed : 0}ms linear
+          animation: ${onMove(0, 300, 0, 0)} ${toggle ? speed : 0}ms linear
             forwards;
           /* z-index: 2; */
         `;

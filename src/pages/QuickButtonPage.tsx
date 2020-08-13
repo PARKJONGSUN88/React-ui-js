@@ -11,7 +11,7 @@ const QuickButtonPage = () => {
   return (
     <Cover>
       <QuickButton
-        direction={'down'}
+        direction={'right'}
         button={<img src={menu} alt="" width="100%" />}
         dials={[
           { url: '페이스북', icon: <img src={facebook} alt="" width="100%" /> },

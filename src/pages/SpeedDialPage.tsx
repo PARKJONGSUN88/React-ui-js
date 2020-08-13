@@ -30,6 +30,6 @@ export default SpeedDialPage;
 
 const Cover = styled.div`
   position: fixed;
-  top: 300px;
-  left: 300px;
+  top: 100px;
+  left: 100px;
 `;

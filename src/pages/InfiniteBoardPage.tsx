@@ -9,7 +9,7 @@ import youtube from '../img/youtube.png';
 const InfiniteBoardPage = () => {
   return (
     <>
-      <Cover>
+      {/* <Cover>
         <InfiniteBoard
           items={[
             {
@@ -24,7 +24,7 @@ const InfiniteBoardPage = () => {
             { item: <img src={youtube} alt="" width="100%" />, url: '유튜브' },
           ]}
         />
-      </Cover>
+      </Cover> */}
       <Cover2>
         <InfiniteBoard
           direction={'up'}
@@ -96,7 +96,7 @@ const Cover = styled.div`
 
 const Cover2 = styled.div`
   position: fixed;
-  top: 500px;
+  top: 50px;
   left: 100px;
   background-color: aqua;
   display: flex;

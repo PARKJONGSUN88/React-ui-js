@@ -1,11 +1,8 @@
 import * as React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import styled, { keyframes, css } from 'styled-components';
 
-interface InfiniteBoardType {
-  ViewWidth?: number;
-  ViewHeight?: number;
-  direction?: 'left' | 'right' | 'up' | 'down';
+interface SliderThreeType {
   items?: Array<ArrayType>;
   width?: number;
   height?: number;
@@ -19,19 +16,15 @@ interface ArrayType {
 }
 
 interface ContentsType {
-  ViewWidth: number;
-  ViewHeight: number;
-}
-
-interface ControllerType {
   width: number;
   height: number;
 }
 
+interface ControllerType {
+  width: number;
+}
+
 interface ItemsType {
-  ViewWidth: number;
-  ViewHeight: number;
-  direction: 'left' | 'right' | 'up' | 'down';
   width: number;
   height: number;
   speed: number;
@@ -40,13 +33,11 @@ interface ItemsType {
   index: number;
   length: number;
   start: boolean;
-  plus?: boolean;
+  left?: boolean;
+  rotate: boolean;
 }
 
-const Slider: React.FC<InfiniteBoardType> = ({
-  ViewWidth = 800,
-  ViewHeight = 500,
-  direction = 'left',
+const SliderThree: React.FC<SliderThreeType> = ({
   items = [
     { item: '1', url: '1번 사진으로 이동' },
     { item: '2', url: '2번 사진으로 이동' },
@@ -55,41 +46,27 @@ const Slider: React.FC<InfiniteBoardType> = ({
     { item: '5', url: '2번 사진으로 이동' },
     { item: '6', url: '3번 사진으로 이동' },
   ],
-  width = 300,
-  height = 300,
+  width = 400,
+  height = 250,
   speed = 500,
   userFunc = (e: string | number | boolean | null | undefined) =>
     console.log(e),
 }) => {
   const [state, setNum] = useState(1);
   const [start, setStart] = useState(false);
-  const [plus, setPlus] = useState(true);
+  const [left, setleft] = useState(true);
+  const [rotate, setRotate] = useState(false);
+
+  useEffect(() => {
+    !rotate && setRotate(true);
+  }, [rotate]);
 
   return (
     <>
-      <Contents ViewWidth={ViewWidth} ViewHeight={ViewHeight}>
-        <Controller width={width} height={height}>
-          <div
-            onClick={() => {
-              setNum(state < items.length ? state + 1 : 1);
-              setStart(true);
-              setPlus(true);
-            }}
-          ></div>
-          <div
-            onClick={() => {
-              setNum(state > 1 ? state - 1 : items.length);
-              setStart(true);
-              setPlus(false);
-            }}
-          ></div>
-        </Controller>
-
+      <Contents width={width} height={height}>
         {items.map((item, index) => (
           <Items
-            ViewWidth={ViewWidth}
-            ViewHeight={ViewHeight}
-            direction={direction}
+            key={index}
             width={width}
             height={height}
             speed={speed}
@@ -98,26 +75,51 @@ const Slider: React.FC<InfiniteBoardType> = ({
             state={state}
             index={index + 1}
             length={items.length}
-            plus={plus}
+            left={left}
+            rotate={rotate}
           >
-            <div key={index} onClick={() => userFunc(items[index].url)}>
-              {item.item}
+            <div
+              className="itemWrap"
+              onClick={() => userFunc(items[index].url)}
+            >
+              <div className="item">{item.item}</div>
             </div>
           </Items>
         ))}
+        <Controller width={width}>
+          <div
+            className="leftButton"
+            onClick={() => {
+              setNum(state < items.length ? state + 1 : 1);
+              setStart(true);
+              setleft(true);
+              setRotate(false);
+              console.log('왼쪽버튼');
+            }}
+          ></div>
+          <div
+            className="rightButton"
+            onClick={() => {
+              setNum(state > 1 ? state - 1 : items.length);
+              setStart(true);
+              setleft(false);
+              setRotate(false);
+              console.log('오른쪽버튼');
+            }}
+          ></div>
+        </Controller>
       </Contents>
     </>
   );
 };
 
-export default Slider;
+export default SliderThree;
 
 const Contents = styled.div<ContentsType>`
-  width: ${({ ViewWidth }) => ViewWidth}px;
-  height: ${({ ViewHeight }) => ViewHeight}px;
+  width: ${({ width }) => width * 2}px;
+  height: ${({ height }) => height}px;
   position: relative;
   overflow: hidden;
-  border: 1px solid pink;
 `;
 
 const Controller = styled.div<ControllerType>`
@@ -128,8 +130,9 @@ const Controller = styled.div<ControllerType>`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  & > div {
-    width: ${({ width }) => width}px;
+  .leftButton,
+  .rightButton {
+    width: ${({ width }) => width / 2}px;
     height: 100%;
     display: flex;
     align-items: center;
@@ -145,129 +148,135 @@ const Items = styled.div<ItemsType>`
   left: 0;
   display: flex;
   align-items: center;
-  justify-content: space-around;
-  flex-direction: ${({ direction }) => {
-    if (direction === 'up') return 'column';
-    if (direction === 'down') return 'column-reverse';
-    if (direction === 'left') return 'row';
-    if (direction === 'right') return 'row-reverse';
-  }};
-  ${({ state, index, start, speed, length, plus, ViewWidth, height }) => {
-    if (plus) {
-      if (state === index) {
-        // 최종 센터
-        return css`
-          animation: ${onMove(ViewWidth / 3, 0, 0, 0, 0.5, 1)} linear forwards
-            ${start ? speed : 0}ms;
-          z-index: 2;
-        `;
-      }
-      if (state === index + 1 || (state === 1 && index === length)) {
-        // 최종 좌1
-        return css`
-          animation: ${onMove(0, -ViewWidth / 3, 0, height / 8, 1, 0.5)} linear
-            forwards ${start ? speed : 0}ms;
-        `;
-      }
-      if (
-        state === index + 2 ||
-        (state === 1 && index === length - 1) ||
-        (state === 2 && index === length)
-      ) {
-        // 최종 좌2
-        return css`
-          animation: ${onMove(
-              -ViewWidth / 3,
-              (2 * -ViewWidth) / 3,
-              height / 8,
-              height / 8,
-              0.5,
-              0,
-            )}
-            linear forwards ${start ? speed : 0}ms;
-        `;
-      }
-      if (state === index - 1 || (state === length && index === 1)) {
-        // 최종 우1
-        return css`
-          animation: ${onMove(
-              (2 * ViewWidth) / 3,
-              ViewWidth / 3,
-              height / 8,
-              height / 8,
-              0,
-              0.5,
-            )}
-            linear forwards ${start ? speed : 0}ms;
-        `;
+  justify-content: center;
+  .itemWrap {
+    ${({ state, index, start, speed, length, left, height, width }) => {
+      if (left) {
+        if (state === index) {
+          // 최종 센터
+          return css`
+            animation: ${onMove(width - width * 0.25, 0, 0, 0, 0.5, 1)} linear
+              forwards ${start ? speed : 0}ms;
+            z-index: 2;
+          `;
+        }
+        if (state === index + 1 || (state === 1 && index === length)) {
+          // 최종 좌1
+          return css`
+            animation: ${onMove(
+                0,
+                -width + width * 0.25,
+                0,
+                height / 8,
+                1,
+                0.5,
+              )}
+              linear forwards ${start ? speed : 0}ms;
+          `;
+        }
+        if (
+          state === index + 2 ||
+          (state === 1 && index === length - 1) ||
+          (state === 2 && index === length)
+        ) {
+          // 최종 좌2
+          return css`
+            animation: ${onMove(
+                -width + width * 0.25,
+                2 * -width + width * 0.2,
+                height / 8,
+                height / 8,
+                0.5,
+                0,
+              )}
+              linear forwards ${start ? speed : 0}ms;
+          `;
+        }
+        if (state === index - 1 || (state === length && index === 1)) {
+          // 최종 우1
+          return css`
+            animation: ${onMove(
+                2 * width,
+                width - width * 0.25,
+                height / 8,
+                height / 8,
+                0,
+                0.5,
+              )}
+              linear forwards ${start ? speed : 0}ms;
+          `;
+        } else {
+          return css`
+            visibility: hidden;
+          `;
+        }
+        // right
       } else {
-        return css`
-          visibility: hidden;
-        `;
+        if (state === index) {
+          // 최종 센터
+          return css`
+            animation: ${onMove(-width - width * 0.25, 0, 0, 0, 0.5, 1)} linear
+              forwards ${start ? speed : 0}ms;
+            z-index: 2;
+          `;
+        }
+        if (state === index + 1 || (state === 1 && index === length)) {
+          // 최종 좌1
+          return css`
+            animation: ${onMove(
+                2 * -width,
+                -width + width * 0.25,
+                height / 8,
+                height / 8,
+                0,
+                0.5,
+              )}
+              linear forwards ${start ? speed : 0}ms;
+          `;
+        }
+        if (state === index - 1 || (state === length && index === 1)) {
+          // 최종 우1
+          return css`
+            animation: ${onMove(0, width - width * 0.25, 0, height / 8, 1, 0.5)}
+              linear forwards ${start ? speed : 0}ms;
+          `;
+        }
+        if (
+          state === index - 2 ||
+          (state === length - 1 && index === 1) ||
+          (state === length && index === 2)
+        ) {
+          // 최종 우2
+          return css`
+            animation: ${onMove(
+                width - width * 0.25,
+                2 * width - width * 0.25,
+                height / 8,
+                height / 8,
+                0.5,
+                0,
+              )}
+              linear forwards ${start ? speed : 0}ms;
+          `;
+        } else {
+          return css`
+            visibility: hidden;
+          `;
+        }
       }
-      // 뒤록가기
-    } else {
-      if (state === index) {
-        // 최종 센터
-        return css`
-          animation: ${onMove(-ViewWidth / 3, 0, 0, 0, 0.5, 1)} linear forwards
-            ${start ? speed : 0}ms;
-          z-index: 2;
-        `;
-      }
-      if (state === index + 1 || (state === 1 && index === length)) {
-        // 최종 좌1
-        return css`
-          animation: ${onMove(
-              (2 * -ViewWidth) / 3,
-              -ViewWidth / 3,
-              height / 8,
-              height / 8,
-              0,
-              0.5,
-            )}
-            linear forwards ${start ? speed : 0}ms;
-        `;
-      }
-      if (state === index - 1 || (state === length && index === 1)) {
-        // 최종 우1
-        return css`
-          animation: ${onMove(0, ViewWidth / 3, 0, height / 8, 1, 0.5)} linear
-            forwards ${start ? speed : 0}ms;
-        `;
-      }
-      if (
-        state === index - 2 ||
-        (state === length - 1 && index === 1) ||
-        (state === length && index === 2)
-      ) {
-        // 최종 우2
-        return css`
-          animation: ${onMove(
-              ViewWidth / 3,
-              (2 * ViewWidth) / 3,
-              height / 8,
-              height / 8,
-              0.5,
-              0,
-            )}
-            linear forwards ${start ? speed : 0}ms;
-        `;
-      } else {
-        return css`
-          visibility: hidden;
-        `;
-      }
+    }};
+    .item {
+      width: ${({ width }) => width * 0.9}px;
+      height: ${({ height }) => height * 0.9}px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: ${({ start, rotate, left, height }) =>
+          left
+            ? start && rotate && onRotate(0, 25, height * 1.5)
+            : start && rotate && onRotate(0, -25, height * 1.5)}
+        ease 2 alternate ${({ speed }) => speed / 2}ms;
     }
-  }};
-  & > div {
-    font-size: 100px;
-    padding: 10px;
-    width: ${({ width }) => width}px;
-    height: ${({ height }) => height}px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
   }
 `;
 
@@ -284,5 +293,14 @@ const onMove = (
   }
   100% {
     transform: translate(${i}px, ${z}px) scale(${c});
+  }
+`;
+
+const onRotate = (e: number, i: number, z: number) => keyframes`
+  0% {
+    transform: perspective(${z}px) rotateY(${e}deg);
+  }
+  100% {
+    transform: perspective(${z}px) rotateY(${i}deg);
   }
 `;

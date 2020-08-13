@@ -20,7 +20,7 @@ interface dialsType {
   icon: React.ReactElement | string | number;
 }
 
-interface ButtonType {
+interface ContentsType {
   bWidth: number;
   bHeight: number;
 }
@@ -79,7 +79,7 @@ const CardFanning: React.FC<CardFanningType> = ({
   const [start, setStart] = useState(false);
 
   return (
-    <Contents>
+    <Contents bWidth={bWidth} bHeight={bHeight}>
       <Button
         bWidth={bWidth}
         bHeight={bHeight}
@@ -132,11 +132,15 @@ const CardFanning: React.FC<CardFanningType> = ({
 
 export default CardFanning;
 
-const Contents = styled.div`
+const Contents = styled.div<ContentsType>`
   position: relative;
+  transform: translate(
+    ${({ bWidth }) => bWidth / 2}px,
+    ${({ bHeight }) => bHeight / 2}px
+  );
 `;
 
-const Button = styled.div<ButtonType>`
+const Button = styled.div<ContentsType>`
   position: absolute;
   top: 0px;
   width: ${({ bWidth }) => bWidth}px;

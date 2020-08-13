@@ -19,7 +19,7 @@ export default RelayBoardPage;
 
 const Cover = styled.div`
   position: fixed;
-  top: 100px;
+  top: 50px;
   left: 100px;
   border: 1px solid black;
   background-color: skyblue;
@@ -27,7 +27,7 @@ const Cover = styled.div`
 
 const Cover2 = styled.div`
   position: fixed;
-  top: 300px;
+  top: 150px;
   left: 100px;
   border: 1px solid black;
   background-color: skyblue;

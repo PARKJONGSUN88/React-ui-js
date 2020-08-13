@@ -13,20 +13,20 @@ const SliderPage = () => {
         <Slider
           items={[
             {
-              item: <img src={facebook} alt="" width="100%" height="450px" />,
-              url: '1',
+              item: <img src={facebook} alt="" width="100%" />,
+              url: '페이스북',
             },
             {
-              item: <img src={insta} alt="" width="100%" height="450px" />,
-              url: '2',
+              item: <img src={insta} alt="" width="100%" />,
+              url: '인스타',
             },
             {
-              item: <img src={twitter} alt="" width="100%" height="450px" />,
-              url: '3',
+              item: <img src={twitter} alt="" width="100%" />,
+              url: '트위터',
             },
             {
-              item: <img src={youtube} alt="" width="100%" height="450px" />,
-              url: '4',
+              item: <img src={youtube} alt="" width="100%" />,
+              url: '유튜브',
             },
           ]}
         />
@@ -39,7 +39,7 @@ export default SliderPage;
 
 const Cover = styled.div`
   position: fixed;
-  top: 50px;
-  left: 50px;
+  top: 10px;
+  left: 100px;
   /* border: 1px solid black; */
 `;

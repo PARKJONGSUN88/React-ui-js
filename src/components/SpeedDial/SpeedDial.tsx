@@ -20,7 +20,7 @@ interface dialsType {
   icon: React.ReactElement | string | number;
 }
 
-interface ButtonType {
+interface ContentsType {
   bWidth: number;
   bHeight: number;
 }
@@ -73,7 +73,7 @@ const SpeedDial: React.FC<SpeedDialType> = ({
   const [start, setStart] = useState(false);
 
   return (
-    <Contents>
+    <Contents bWidth={bWidth} bHeight={bHeight}>
       <Button
         bWidth={bWidth}
         bHeight={bHeight}
@@ -113,11 +113,15 @@ const SpeedDial: React.FC<SpeedDialType> = ({
 
 export default SpeedDial;
 
-const Contents = styled.div`
+const Contents = styled.div<ContentsType>`
   position: relative;
+  transform: translate(
+    ${({ bWidth }) => bWidth / 2}px,
+    ${({ bHeight }) => bHeight / 2}px
+  );
 `;
 
-const Button = styled.div<ButtonType>`
+const Button = styled.div<ContentsType>`
   position: absolute;
   top: 0px;
   width: ${({ bWidth }) => bWidth}px;

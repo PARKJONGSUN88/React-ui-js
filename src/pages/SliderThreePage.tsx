@@ -6,7 +6,6 @@ import movie2 from '../img/movie2.jpg';
 import movie3 from '../img/movie3.jpg';
 import movie4 from '../img/movie4.jpg';
 import movie5 from '../img/movie5.jpg';
-import movie6 from '../img/movie6.jpg';
 
 const SliderThreePage = () => {
   return (
@@ -16,27 +15,23 @@ const SliderThreePage = () => {
           items={[
             {
               item: <img src={movie1} alt="" width="100%" />,
-              url: '1',
+              url: '도둑들',
             },
             {
               item: <img src={movie2} alt="" width="100%" />,
-              url: '2',
+              url: '부산행',
             },
             {
               item: <img src={movie3} alt="" width="100%" />,
-              url: '3',
+              url: '서울역',
             },
             {
               item: <img src={movie4} alt="" width="100%" />,
-              url: '4',
+              url: '베테랑',
             },
             {
               item: <img src={movie5} alt="" width="100%" />,
-              url: '5',
-            },
-            {
-              item: <img src={movie6} alt="" width="100%" />,
-              url: '6',
+              url: '아바타',
             },
           ]}
         />
@@ -51,5 +46,5 @@ const Cover = styled.div`
   position: fixed;
   top: 10px;
   left: 10px;
-  /* border: 1px solid black; */
+  /* background-color: aqua; */
 `;

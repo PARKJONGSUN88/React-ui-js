@@ -31,10 +31,10 @@ const JellyPopPage = () => {
           items={<img src={youtube} alt="" width="100%" />}
         />
       </Cover>
-      <Cover2>
+      {/* <Cover2>
         <JellyPop itemsHeight={200} button={<Button />} />
         <JellyPop button={<Button />} items={<Items />} />
-      </Cover2>
+      </Cover2> */}
     </>
   );
 };
@@ -43,15 +43,15 @@ export default JellyPopPage;
 
 const Cover = styled.div`
   position: fixed;
-  top: 100px;
-  left: 100px;
+  top: 50px;
+  left: 50px;
   display: flex;
 `;
 
 const Cover2 = styled.div`
   position: fixed;
-  top: 300px;
-  left: 100px;
+  top: 150px;
+  left: 10px;
 `;
 
 const Button = () => {
