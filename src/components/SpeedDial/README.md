@@ -2,7 +2,7 @@
 
 **다이얼이 돌아가는 것처럼 아이템들을 보여줍니다.**
 <br>
-<img width="640" alt="gif2" src="https://user-images.githubusercontent.com/50945715/90135326-7a59af00-ddad-11ea-974b-7cad8ecfbce5.gif">
+<img width="1280" alt="gif2" src="https://user-images.githubusercontent.com/50945715/90135326-7a59af00-ddad-11ea-974b-7cad8ecfbce5.gif">
 <br>
 실행버튼이 작동되면 내부 요소들을 보여줍니다.
 

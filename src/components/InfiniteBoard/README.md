@@ -2,7 +2,7 @@
 
 **끊기지 않고 연속으로 아이템들을 보여줍니다.**
 <br>
-<img width="640" alt="2" src="https://user-images.githubusercontent.com/50945715/90135333-7b8adc00-ddad-11ea-8c1f-1728368c465b.gif">
+<img width="1280" alt="2" src="https://user-images.githubusercontent.com/50945715/90135333-7b8adc00-ddad-11ea-8c1f-1728368c465b.gif">
 <br>
 작성된 모든 아이템들이 다함께 움직이는 형식입니다.
 

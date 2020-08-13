@@ -2,7 +2,7 @@
 
 **카드가 펼쳐지는 것처럼 아이템들을 보여줍니다.**
 <br>
-<img width="640" alt="2" src="https://user-images.githubusercontent.com/50945715/90135321-788feb80-ddad-11ea-941b-0ecc252e209c.gif">
+<img width="1280" alt="2" src="https://user-images.githubusercontent.com/50945715/90135321-788feb80-ddad-11ea-941b-0ecc252e209c.gif">
 <br>
 
 실행버튼이 작동되면 내부 요소들을 보여줍니다.

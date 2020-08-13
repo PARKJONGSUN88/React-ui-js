@@ -2,7 +2,7 @@
 
 **일렬로 아이템들이 순서대로 나타납니다.**
 <br>
-<img width="640" src="https://user-images.githubusercontent.com/50945715/90135329-7a59af00-ddad-11ea-95fe-832119ee5936.gif">
+<img width="1280" src="https://user-images.githubusercontent.com/50945715/90135329-7a59af00-ddad-11ea-95fe-832119ee5936.gif">
 <br>
 실행버튼이 작동되면 내부 요소들을 보여줍니다.
 
