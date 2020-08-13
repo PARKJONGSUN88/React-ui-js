@@ -9,18 +9,23 @@ import youtube from '../img/youtube.png';
 
 const QuickButtonPage = () => {
   return (
-    <Cover>
-      <QuickButton
-        direction={'right'}
-        button={<img src={menu} alt="" width="100%" />}
-        dials={[
-          { url: '페이스북', icon: <img src={facebook} alt="" width="100%" /> },
-          { url: '인스타', icon: <img src={insta} alt="" width="100%" /> },
-          { url: '트위터', icon: <img src={twitter} alt="" width="100%" /> },
-          { url: '유튜브', icon: <img src={youtube} alt="" width="100%" /> },
-        ]}
-      />
-    </Cover>
+    <>
+      <Cover>
+        <QuickButton
+          direction={'right'}
+          button={<img src={menu} alt="" width="100%" />}
+          dials={[
+            {
+              url: '페이스북',
+              icon: <img src={facebook} alt="" width="100%" />,
+            },
+            { url: '인스타', icon: <img src={insta} alt="" width="100%" /> },
+            { url: '트위터', icon: <img src={twitter} alt="" width="100%" /> },
+            { url: '유튜브', icon: <img src={youtube} alt="" width="100%" /> },
+          ]}
+        />
+      </Cover>
+    </>
   );
 };
 

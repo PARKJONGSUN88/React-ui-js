@@ -39,6 +39,6 @@ export default SliderPage;
 
 const Cover = styled.div`
   position: fixed;
-  top: 10px;
-  left: 100px;
+  top: 50px;
+  left: 50px;
 `;

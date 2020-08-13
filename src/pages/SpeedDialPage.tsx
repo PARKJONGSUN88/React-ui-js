@@ -9,20 +9,22 @@ import youtube from '../img/youtube.png';
 
 const SpeedDialPage = () => {
   return (
-    <Cover>
-      <SpeedDial
-        button={<img src={menu} alt="" width="100%" />}
-        fDeg={0}
-        deg={-45}
-        between={100}
-        dials={[
-          { icon: <img src={facebook} alt="" width="100%" /> },
-          { url: false, icon: <img src={insta} alt="" width="100%" /> },
-          { url: 1, icon: <img src={twitter} alt="" width="100%" /> },
-          { url: '유튜브', icon: <img src={youtube} alt="" width="100%" /> },
-        ]}
-      />
-    </Cover>
+    <>
+      <Cover>
+        <SpeedDial
+          button={<img src={menu} alt="" width="100%" />}
+          fDeg={0}
+          deg={-45}
+          between={100}
+          dials={[
+            { icon: <img src={facebook} alt="" width="100%" /> },
+            { url: false, icon: <img src={insta} alt="" width="100%" /> },
+            { url: 1, icon: <img src={twitter} alt="" width="100%" /> },
+            { url: '유튜브', icon: <img src={youtube} alt="" width="100%" /> },
+          ]}
+        />
+      </Cover>
+    </>
   );
 };
 

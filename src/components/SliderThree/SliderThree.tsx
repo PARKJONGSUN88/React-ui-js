@@ -28,7 +28,6 @@ interface ItemsType {
   width: number;
   height: number;
   speed: number;
-  count: number;
   state: number;
   index: number;
   length: number;
@@ -43,8 +42,6 @@ const SliderThree: React.FC<SliderThreeType> = ({
     { item: '2', url: '2번 사진으로 이동' },
     { item: '3', url: '3번 사진으로 이동' },
     { item: '4', url: '1번 사진으로 이동' },
-    { item: '5', url: '2번 사진으로 이동' },
-    { item: '6', url: '3번 사진으로 이동' },
   ],
   width = 400,
   height = 250,
@@ -52,9 +49,9 @@ const SliderThree: React.FC<SliderThreeType> = ({
   userFunc = (e: string | number | boolean | null | undefined) =>
     console.log(e),
 }) => {
-  const [state, setNum] = useState(1);
+  const [state, setState] = useState(1);
   const [start, setStart] = useState(false);
-  const [left, setleft] = useState(true);
+  const [left, setleft] = useState(false);
   const [rotate, setRotate] = useState(false);
 
   useEffect(() => {
@@ -62,54 +59,46 @@ const SliderThree: React.FC<SliderThreeType> = ({
   }, [rotate]);
 
   return (
-    <>
-      <Contents width={width} height={height}>
-        {items.map((item, index) => (
-          <Items
-            key={index}
-            width={width}
-            height={height}
-            speed={speed}
-            start={start}
-            count={items.length}
-            state={state}
-            index={index + 1}
-            length={items.length}
-            left={left}
-            rotate={rotate}
-          >
-            <div
-              className="itemWrap"
-              onClick={() => userFunc(items[index].url)}
-            >
-              <div className="item">{item.item}</div>
-            </div>
-          </Items>
-        ))}
-        <Controller width={width}>
-          <div
-            className="leftButton"
-            onClick={() => {
-              setNum(state < items.length ? state + 1 : 1);
-              setStart(true);
-              setleft(true);
-              setRotate(false);
-              console.log('왼쪽버튼');
-            }}
-          ></div>
-          <div
-            className="rightButton"
-            onClick={() => {
-              setNum(state > 1 ? state - 1 : items.length);
-              setStart(true);
-              setleft(false);
-              setRotate(false);
-              console.log('오른쪽버튼');
-            }}
-          ></div>
-        </Controller>
-      </Contents>
-    </>
+    <Contents width={width} height={height}>
+      <Controller width={width}>
+        <div
+          className="leftButton"
+          onClick={() => {
+            setState(state < items.length ? state + 1 : 1);
+            setStart(true);
+            setleft(true);
+            setRotate(false);
+          }}
+        />
+        <div
+          className="rightButton"
+          onClick={() => {
+            setState(state > 1 ? state - 1 : items.length);
+            setStart(true);
+            setleft(false);
+            setRotate(false);
+          }}
+        />
+      </Controller>
+      {items.map((item, index) => (
+        <Items
+          key={index}
+          width={width}
+          height={height}
+          speed={speed}
+          start={start}
+          state={state}
+          index={index + 1}
+          length={items.length}
+          left={left}
+          rotate={rotate}
+        >
+          <div className="itemWrap" onClick={() => userFunc(items[index].url)}>
+            <div className="item">{item.item}</div>
+          </div>
+        </Items>
+      ))}
+    </Contents>
   );
 };
 
@@ -134,9 +123,6 @@ const Controller = styled.div<ControllerType>`
   .rightButton {
     width: ${({ width }) => width / 2}px;
     height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     z-index: 3;
   }
 `;
@@ -150,18 +136,19 @@ const Items = styled.div<ItemsType>`
   align-items: center;
   justify-content: center;
   .itemWrap {
+    z-index: ${({ state, index }) => (state === index ? 2 : 1)};
     ${({ state, index, start, speed, length, left, height, width }) => {
+      // 왼쪽버튼 클릭시
       if (left) {
+        // 왼쪽버튼 클릭시: 가운데로
         if (state === index) {
-          // 최종 센터
           return css`
             animation: ${onMove(width - width * 0.25, 0, 0, 0, 0.5, 1)} linear
               forwards ${start ? speed : 0}ms;
-            z-index: 2;
           `;
         }
+        // 왼쪽버튼 클릭시: 왼쪽 첫번째로
         if (state === index + 1 || (state === 1 && index === length)) {
-          // 최종 좌1
           return css`
             animation: ${onMove(
                 0,
@@ -174,12 +161,12 @@ const Items = styled.div<ItemsType>`
               linear forwards ${start ? speed : 0}ms;
           `;
         }
+        // 왼쪽버튼 클릭시: 왼쪽 두번째로
         if (
           state === index + 2 ||
           (state === 1 && index === length - 1) ||
           (state === 2 && index === length)
         ) {
-          // 최종 좌2
           return css`
             animation: ${onMove(
                 -width + width * 0.25,
@@ -192,8 +179,8 @@ const Items = styled.div<ItemsType>`
               linear forwards ${start ? speed : 0}ms;
           `;
         }
+        // 왼쪽버튼 클릭시: 오른쪽으로
         if (state === index - 1 || (state === length && index === 1)) {
-          // 최종 우1
           return css`
             animation: ${onMove(
                 2 * width,
@@ -205,23 +192,25 @@ const Items = styled.div<ItemsType>`
               )}
               linear forwards ${start ? speed : 0}ms;
           `;
-        } else {
+        }
+        //왼쪽버튼 클릭시: 그외 hidden
+        else {
           return css`
             visibility: hidden;
           `;
         }
-        // right
-      } else {
+      }
+      // 오른쪽버튼 클릭시
+      else {
+        // 오른쪽버튼 클릭시: 가운데로
         if (state === index) {
-          // 최종 센터
           return css`
             animation: ${onMove(-width - width * 0.25, 0, 0, 0, 0.5, 1)} linear
               forwards ${start ? speed : 0}ms;
-            z-index: 2;
           `;
         }
+        // 오른쪽버튼 클릭시: 왼쪽 첫번째로
         if (state === index + 1 || (state === 1 && index === length)) {
-          // 최종 좌1
           return css`
             animation: ${onMove(
                 2 * -width,
@@ -234,19 +223,19 @@ const Items = styled.div<ItemsType>`
               linear forwards ${start ? speed : 0}ms;
           `;
         }
+        // 오른쪽버튼 클릭시: 오른쪽 첫번째로
         if (state === index - 1 || (state === length && index === 1)) {
-          // 최종 우1
           return css`
             animation: ${onMove(0, width - width * 0.25, 0, height / 8, 1, 0.5)}
               linear forwards ${start ? speed : 0}ms;
           `;
         }
+        // 오른쪽버튼 클릭시: 오른쪽 두번째로
         if (
           state === index - 2 ||
           (state === length - 1 && index === 1) ||
           (state === length && index === 2)
         ) {
-          // 최종 우2
           return css`
             animation: ${onMove(
                 width - width * 0.25,
@@ -258,11 +247,11 @@ const Items = styled.div<ItemsType>`
               )}
               linear forwards ${start ? speed : 0}ms;
           `;
-        } else {
-          return css`
-            visibility: hidden;
-          `;
         }
+        // 오른쪽버튼 클릭시: 그외 hiddenelse {
+        return css`
+          visibility: hidden;
+        `;
       }
     }};
     .item {
