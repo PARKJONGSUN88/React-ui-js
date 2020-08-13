@@ -46,5 +46,4 @@ const Cover = styled.div`
   position: fixed;
   top: 10px;
   left: 10px;
-  /* background-color: aqua; */
 `;

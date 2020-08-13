@@ -41,5 +41,4 @@ const Cover = styled.div`
   position: fixed;
   top: 10px;
   left: 100px;
-  /* border: 1px solid black; */
 `;

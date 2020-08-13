@@ -1,7 +1,9 @@
  ## Jelly Pop
 
 **하위 메뉴를 젤리가 튕기는 것처럼 출현시켜줍니다.**
-
+<br>
+<img width="640" alt="2" src="https://user-images.githubusercontent.com/50945715/90135331-7af24580-ddad-11ea-81d8-7d808869108b.gif">
+<br>
 실행버튼이 작동되면 하위 메뉴를 보여줍니다.
 
 hidden 메뉴로 사용하기 좋습니다.

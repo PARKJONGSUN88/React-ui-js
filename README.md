@@ -79,9 +79,9 @@ doc: https://github.com/PARKJONGSUN88/React-ui-js/tree/master/src/components/Inf
 
 doc: https://github.com/PARKJONGSUN88/React-ui-js/tree/master/src/components/Slider
 
-**작업중입니다**
+**버튼을 클릭하여 다음 아이템을 보여줍니다.** 
 <br>
-<img width="640"  alt="2" src="https://user-images.githubusercontent.com/50945715/90135341-7cbc0900-ddad-11ea-9c3e-3df46d45a4c6.gif">
+<img width="640" alt="2" src="https://user-images.githubusercontent.com/50945715/90135341-7cbc0900-ddad-11ea-9c3e-3df46d45a4c6.gif">
 <br>
 <br>
 <br>
@@ -90,7 +90,7 @@ doc: https://github.com/PARKJONGSUN88/React-ui-js/tree/master/src/components/Sli
 
 doc: https://github.com/PARKJONGSUN88/React-ui-js/tree/master/src/components/SliderThree
 
-**작업중입니다**
+**현재, 이전, 다음  아이템을 보여줍니다.** 
 <br>
 <img width="640" alt="2" src="https://user-images.githubusercontent.com/50945715/90135338-7c237280-ddad-11ea-8013-1d9fe1a2a6a4.gif">
 <br>

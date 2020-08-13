@@ -1,7 +1,9 @@
  ## Relay Board
 
 **공지사항을 보여주기에 적합합니다.** 
-
+<br>
+<img width="640"  alt="2" src="https://user-images.githubusercontent.com/50945715/90135332-7af24580-ddad-11ea-81eb-cce0c258481c.gif">
+<br>
 작성된 모든 아이템들이 다함께 움직이는 형식입니다.
 
 한 로테이션이 끝난뒤 다음 로테이션이 진행되는 형식이므로 
