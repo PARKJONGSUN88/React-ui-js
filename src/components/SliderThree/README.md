@@ -2,7 +2,7 @@
 
 **현재, 이전, 다음  아이템을 보여줍니다.** 
 <br>
-<img width="640" alt="2" src="https://user-images.githubusercontent.com/50945715/90135338-7c237280-ddad-11ea-8013-1d9fe1a2a6a4.gif">
+<img width="1280" alt="2" src="https://user-images.githubusercontent.com/50945715/90135338-7c237280-ddad-11ea-8013-1d9fe1a2a6a4.gif">
 <br>
 
 작성된 아이템들이 클릭시 순서대로 나타납니다.
