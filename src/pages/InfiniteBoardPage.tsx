@@ -11,6 +11,7 @@ const InfiniteBoardPage = () => {
     <>
       <Cover>
         <InfiniteBoard
+          speed={3}
           items={[
             {
               item: <img src={facebook} alt="" width="100%" />,
@@ -91,7 +92,6 @@ const Cover = styled.div`
   position: fixed;
   top: 50px;
   left: 100px;
-  border: 1px solid black;
 `;
 
 const Cover2 = styled.div`
