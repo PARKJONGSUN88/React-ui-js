@@ -2,7 +2,7 @@
 
 **버튼을 클릭하여 다음 아이템을 보여줍니다.** 
 <br>
-<img width="1280" alt="2" src="https://user-images.githubusercontent.com/50945715/90135341-7cbc0900-ddad-11ea-9c3e-3df46d45a4c6.gif">
+<img width="1280" alt="2" src="https://user-images.githubusercontent.com/50945715/90157611-e564af00-ddc8-11ea-8b61-f7124777b7cd.gif">
 <br>
 
 작성된 아이템들이 클릭시 순서대로 나타납니다.
