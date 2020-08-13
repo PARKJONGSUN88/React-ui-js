@@ -70,7 +70,7 @@ doc: https://github.com/PARKJONGSUN88/React-ui-js/tree/master/src/components/Inf
 
 **끊기지 않고 연속으로 아이템들을 보여줍니다.**
 <br>
-<img width="640" alt="2" src="https://user-images.githubusercontent.com/50945715/90135333-7b8adc00-ddad-11ea-8c1f-1728368c465b.gif">
+<img width="640" alt="2" src="https://user-images.githubusercontent.com/50945715/90157600-e39aeb80-ddc8-11ea-95c9-27ec1d21aeeb.gif">
 <br>
 <br>
 <br>
@@ -81,7 +81,7 @@ doc: https://github.com/PARKJONGSUN88/React-ui-js/tree/master/src/components/Sli
 
 **버튼을 클릭하여 다음 아이템을 보여줍니다.** 
 <br>
-<img width="640" alt="2" src="https://user-images.githubusercontent.com/50945715/90135341-7cbc0900-ddad-11ea-9c3e-3df46d45a4c6.gif">
+<img width="640" alt="2" src="https://user-images.githubusercontent.com/50945715/90157611-e564af00-ddc8-11ea-8b61-f7124777b7cd.gif">
 <br>
 <br>
 <br>
